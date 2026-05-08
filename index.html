@@ -37,10 +37,20 @@
     </button>
 
     <p id="erro" class="text-red-400 text-sm mt-4 text-center"></p>
-
+    <div class="w-[100%] flex justify-center item-center text-center mt-20">
+      <p id="dev">@Desenvolvedor</p>
+    </div>
   </div>
 
   <script>
+    const dev = document.getElementById("dev");
+    dev.addEventListener("click",()=>{
+        window.open(
+        "https://www.instagram.com/tagu.designer",
+        "_blank"
+    );
+    })
+
     async function login() {
       const email = document.getElementById('email').value;
       const senha = document.getElementById('senha').value;

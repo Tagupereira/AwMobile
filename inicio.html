@@ -1,296 +1,343 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "background": "#060e20",
-                    "secondary-fixed": "#69f6b8",
-                    "on-primary-container": "#001e5a",
-                    "on-secondary-fixed": "#00452d",
-                    "surface-bright": "#1f2b49",
-                    "surface-container-high": "#141f38",
-                    "error-container": "#9f0519",
-                    "inverse-primary": "#0053dc",
-                    "inverse-on-surface": "#4d556b",
-                    "tertiary-container": "#fd4e4d",
-                    "on-surface": "#dee5ff",
-                    "tertiary-fixed-dim": "#ff7b74",
-                    "surface-variant": "#192540",
-                    "surface-tint": "#90abff",
-                    "error-dim": "#d7383b",
-                    "primary-fixed-dim": "#658eff",
-                    "on-primary": "#002873",
-                    "on-tertiary-fixed": "#3a0003",
-                    "primary-fixed": "#7b9cff",
-                    "secondary-fixed-dim": "#58e7ab",
-                    "surface-container-low": "#091328",
-                    "outline": "#6d758c",
-                    "surface-container": "#0f1930",
-                    "on-secondary": "#005a3c",
-                    "on-secondary-fixed-variant": "#006544",
-                    "on-background": "#dee5ff",
-                    "on-surface-variant": "#a3aac4",
-                    "on-primary-fixed-variant": "#00266e",
-                    "on-tertiary-container": "#1f0001",
-                    "on-error-container": "#ffa8a3",
-                    "secondary": "#69f6b8",
-                    "error": "#ff716c",
-                    "surface": "#060e20",
-                    "on-secondary-container": "#e1ffec",
-                    "surface-dim": "#060e20",
-                    "surface-container-lowest": "#000000",
-                    "on-primary-fixed": "#000000",
-                    "outline-variant": "#40485d",
-                    "surface-container-highest": "#192540",
-                    "tertiary-dim": "#ff716a",
-                    "inverse-surface": "#faf8ff",
-                    "primary-dim": "#316bf3",
-                    "tertiary": "#ff716a",
-                    "on-tertiary": "#490005",
-                    "secondary-dim": "#58e7ab",
-                    "secondary-container": "#006c49",
-                    "on-error": "#490006",
-                    "primary-container": "#7b9cff",
-                    "on-tertiary-fixed-variant": "#79000e",
-                    "primary": "#90abff",
-                    "tertiary-fixed": "#ff928b"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "fontFamily": {
-                    "headline": ["Manrope"],
-                    "body": ["Inter"],
-                    "label": ["Inter"]
-            }
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#060e20",
+            "secondary-fixed": "#69f6b8",
+            "on-primary-container": "#001e5a",
+            "on-secondary-fixed": "#00452d",
+            "surface-bright": "#1f2b49",
+            "surface-container-high": "#141f38",
+            "error-container": "#9f0519",
+            "inverse-primary": "#0053dc",
+            "inverse-on-surface": "#4d556b",
+            "tertiary-container": "#fd4e4d",
+            "on-surface": "#dee5ff",
+            "tertiary-fixed-dim": "#ff7b74",
+            "surface-variant": "#192540",
+            "surface-tint": "#90abff",
+            "error-dim": "#d7383b",
+            "primary-fixed-dim": "#658eff",
+            "on-primary": "#002873",
+            "on-tertiary-fixed": "#3a0003",
+            "primary-fixed": "#7b9cff",
+            "secondary-fixed-dim": "#58e7ab",
+            "surface-container-low": "#091328",
+            "outline": "#6d758c",
+            "surface-container": "#0f1930",
+            "on-secondary": "#005a3c",
+            "on-secondary-fixed-variant": "#006544",
+            "on-background": "#dee5ff",
+            "on-surface-variant": "#a3aac4",
+            "on-primary-fixed-variant": "#00266e",
+            "on-tertiary-container": "#1f0001",
+            "on-error-container": "#ffa8a3",
+            "secondary": "#69f6b8",
+            "error": "#ff716c",
+            "surface": "#060e20",
+            "on-secondary-container": "#e1ffec",
+            "surface-dim": "#060e20",
+            "surface-container-lowest": "#000000",
+            "on-primary-fixed": "#000000",
+            "outline-variant": "#40485d",
+            "surface-container-highest": "#192540",
+            "tertiary-dim": "#ff716a",
+            "inverse-surface": "#faf8ff",
+            "primary-dim": "#316bf3",
+            "tertiary": "#ff716a",
+            "on-tertiary": "#490005",
+            "secondary-dim": "#58e7ab",
+            "secondary-container": "#006c49",
+            "on-error": "#490006",
+            "primary-container": "#7b9cff",
+            "on-tertiary-fixed-variant": "#79000e",
+            "primary": "#90abff",
+            "tertiary-fixed": "#ff928b"
           },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
         },
-      }
-    </script>
-<style>
-        body { background-color: #060e20; font-family: 'Inter', sans-serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-        .glass-nav { background: rgba(31, 43, 73, 0.7); backdrop-filter: blur(20px); }
-        .milled-card { background: #0f1930; }
-        .tonal-surface { background: #091328; }
-        .high-signal-gradient-blue { background: linear-gradient(135deg, #7b9cff 0%, #316bf3 100%); }
-        .high-signal-gradient-green { background: linear-gradient(135deg, #69f6b8 0%, #006c49 100%); }
-    </style>
-<style>
+      },
+    }
+  </script>
+  <style>
+    body {
+      background-color: #060e20;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .glass-nav {
+      background: rgba(31, 43, 73, 0.7);
+      backdrop-filter: blur(20px);
+    }
+
+    .milled-card {
+      background: #0f1930;
+    }
+
+    .tonal-surface {
+      background: #091328;
+    }
+
+    .high-signal-gradient-blue {
+      background: linear-gradient(135deg, #7b9cff 0%, #316bf3 100%);
+    }
+
+    .high-signal-gradient-green {
+      background: linear-gradient(135deg, #69f6b8 0%, #006c49 100%);
+    }
+  </style>
+  <style>
     body {
       min-height: max(884px, 100dvh);
     }
   </style>
-  </head>
+</head>
+
 <body class="text-on-surface antialiased min-h-screen pb-32">
-<!-- TopAppBar -->
-<header class="w-full top-0 sticky bg-[#060e20] z-[60]">
-<div class="flex justify-between items-center px-6 py-4 w-full bg-[#091328]">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/20">
-<img class="w-full h-full object-cover" data-alt="Professional profile portrait of a female sound engineer with soft studio lighting and a neutral expression" src="logo2.png"/>
-</div>
-<h1 class="font-manrope font-bold text-2xl tracking-tight text-[#dee5ff]">AW eventos</h1>
-</div>
-<button class="w-10 h-10 rounded-xl flex items-center justify-center text-[#90abff] hover:bg-[#0f1930] transition-colors duration-200">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-</button>
-</div>
-</header>
-<main class="px-6 pt-6 space-y-8">
-<!-- Metrics Bento Grid -->
-<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<!-- Total Equipment -->
-<div class="goItens milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
-<div class="flex justify-between items-start">
-<span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
-<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Ativos</span>
-</div>
-<div class="">
-<div id="item-qtd" class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">0</div>
-<div class="text-sm font-medium text-on-surface-variant">Equipamentos</div>
-</div>
-</div>
-<!-- In Use -->
-<div class="milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
-<div class="flex justify-between items-start">
-<span class="material-symbols-outlined text-secondary" data-icon="sync_alt">sync_alt</span>
-<span class="text-[10px] font-bold uppercase tracking-widest text-secondary/70">Flowing</span>
-</div>
-<div>
-<div class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">45</div>
-<div class="text-sm font-medium text-on-surface-variant">In Use</div>
-</div>
-</div>
-<!-- Alerts -->
-<div class="milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
-<div class="flex justify-between items-start">
-<span class="material-symbols-outlined text-tertiary" data-icon="warning">warning</span>
-<span class="text-[10px] font-bold uppercase tracking-widest text-tertiary/70">Manutenção</span>
-</div>
-<div>
-<div class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">3</div>
-<div class="text-sm font-medium text-on-surface-variant">Alerts</div>
-</div>
-</div>
-<!-- Total Events -->
-<div class="milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
-<div class="flex justify-between items-start">
-<span class="material-symbols-outlined text-primary-fixed-dim" data-icon="event">event</span>
-<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Monthly</span>
-</div>
-<div>
-<div class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">12</div>
-<div class="text-sm font-medium text-on-surface-variant">Total Events</div>
-</div>
-</div>
-</section>
-<!-- Primary Actions -->
-<section class="flex flex-col gap-4">
-<button class="high-signal-gradient-blue w-full h-20 rounded-xl flex items-center justify-between px-8 shadow-[0_12px_32px_-4px_rgba(49,107,243,0.3)] active:scale-[0.98] transition-transform">
-<div class="text-left">
-<div class="font-headline font-black text-xl tracking-tight text-white">CHECK-OUT</div>
-<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">Assign Equipment</div>
-</div>
-<span class="material-symbols-outlined text-white text-3xl" data-icon="arrow_outward">arrow_outward</span>
-</button>
-<button class="high-signal-gradient-green w-full h-20 rounded-xl flex items-center justify-between px-8 shadow-[0_12px_32px_-4px_rgba(105,246,184,0.2)] active:scale-[0.98] transition-transform">
-<div class="text-left">
-<div class="font-headline font-black text-xl tracking-tight text-on-secondary-fixed">CHECK-IN</div>
-<div class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-secondary-fixed/70">Return Gear</div>
-</div>
-<span class="material-symbols-outlined text-on-secondary-fixed text-3xl" data-icon="download">download</span>
-</button>
-</section>
-<!-- Next Events -->
-<section class="space-y-4">
-<div class="flex justify-between items-end">
-<h2 class="font-manrope font-extrabold text-xl tracking-tight text-on-surface">Next Events</h2>
-<button class="text-xs font-bold uppercase tracking-widest text-primary">View Calendar</button>
-</div>
-<div class="space-y-3">
-<!-- Event Card 1 -->
-<div class="tonal-surface p-4 rounded-xl flex items-center gap-4">
-<div class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
-<span class="text-[10px] font-bold uppercase text-on-surface-variant">Oct</span>
-<span class="text-lg font-headline font-black text-primary">24</span>
-</div>
-<div class="flex-1 min-w-0">
-<h3 class="font-semibold text-on-surface truncate">Neon Horizon Tour</h3>
-<p class="text-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
-                            Madison Square Garden, NY
-                        </p>
-</div>
-<div class="text-right shrink-0">
-<div class="inline-flex px-2 py-1 rounded bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-tighter">
-                            In Prep
-                        </div>
-</div>
-</div>
-<!-- Event Card 2 -->
-<div class="tonal-surface p-4 rounded-xl flex items-center gap-4">
-<div class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
-<span class="text-[10px] font-bold uppercase text-on-surface-variant">Oct</span>
-<span class="text-lg font-headline font-black text-primary">28</span>
-</div>
-<div class="flex-1 min-w-0">
-<h3 class="font-semibold text-on-surface truncate">Blue Note Jazz Festival</h3>
-<p class="text-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
-                            The Village, NY
-                        </p>
-</div>
-<div class="text-right shrink-0">
-<div class="inline-flex px-2 py-1 rounded bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">
-                            Pending
-                        </div>
-</div>
-</div>
-<!-- Event Card 3 -->
-<div class="tonal-surface p-4 rounded-xl flex items-center gap-4 opacity-70">
-<div class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
-<span class="text-[10px] font-bold uppercase text-on-surface-variant">Nov</span>
-<span class="text-lg font-headline font-black text-primary">02</span>
-</div>
-<div class="flex-1 min-w-0">
-<h3 class="font-semibold text-on-surface truncate">Electric Peaks Gala</h3>
-<p class="text-sm text-on-surface-variant flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
-                            Alpine Stadium, CO
-                        </p>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-6 px-4 bg-[#060e20]/70 backdrop-blur-xl shadow-[0_-12px_32px_-4px_rgba(222,229,255,0.08)] rounded-t-3xl">
-<div class="flex flex-col items-center justify-center text-[#90abff] bg-[#316bf3]/10 rounded-xl p-2">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Home</span>
-</div>
-<div class="goItens flex flex-col items-center justify-center text-[#a3aac4] p-2 hover:text-[#dee5ff]">
-<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
-<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Stock</span>
-</div>
-<div class="flex flex-col items-center justify-center">
-<button href="cadastro.html" class="w-14 h-14 rounded-full high-signal-gradient-blue shadow-[0_8px_24px_rgba(49,107,243,0.4)] flex items-center justify-center -translate-y-4 border-4 border-background">
-<span class="material-symbols-outlined text-white text-3xl" data-icon="add" style="font-variation-settings: 'FILL' 0, 'wght' 700;">add</span>
-</button>
-</div>
-<div class="flex flex-col items-center justify-center text-[#a3aac4] p-2 hover:text-[#dee5ff]">
-<span class="material-symbols-outlined" data-icon="event">event</span>
-<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Events</span>
-</div>
-<div class="flex flex-col items-center justify-center text-[#a3aac4] p-2 hover:text-[#dee5ff]">
-<span class="material-symbols-outlined" data-icon="group">group</span>
-<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Team</span>
-</div>
-</nav>
-<script>
-const API_URL_ITENS = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/itens';
+  <!-- TopAppBar -->
+  <header class="w-full top-0 sticky bg-[#060e20] z-[60]">
+    <div class="flex justify-between items-center px-6 py-4 w-full bg-[#091328]">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/20">
+          <img class="w-full h-full object-cover"
+            data-alt="Professional profile portrait of a female sound engineer with soft studio lighting and a neutral expression"
+            src="logo2.png" />
+        </div>
+        <h1 class="font-manrope font-bold text-2xl tracking-tight text-[#dee5ff]">AW eventos</h1>
+      </div>
+      <button
+        class="w-10 h-10 rounded-xl flex items-center justify-center text-[#90abff] hover:bg-[#0f1930] transition-colors duration-200">
+        <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+      </button>
+    </div>
+  </header>
+  <main class="px-6 pt-6 space-y-8">
+    <!-- Metrics Bento Grid -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <!-- Total Equipment -->
+      <div class="goItens milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
+        <div class="flex justify-between items-start">
+          <span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Ativos</span>
+        </div>
+        <div class="">
+          <div id="item-qtd" class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">0</div>
+          <div class="text-sm font-medium text-on-surface-variant">Equipamentos</div>
+        </div>
+      </div>
+      <!-- In Use -->
+      <div class="milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
+        <div class="flex justify-between items-start">
+          <span class="material-symbols-outlined text-secondary" data-icon="sync_alt">sync_alt</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-secondary/70">Flowing</span>
+        </div>
+        <div>
+          <div class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">45</div>
+          <div class="text-sm font-medium text-on-surface-variant">In Use</div>
+        </div>
+      </div>
+      <!-- Alerts -->
+      <div class="milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
+        <div class="flex justify-between items-start">
+          <span class="material-symbols-outlined text-tertiary" data-icon="warning">warning</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-tertiary/70">Manutenção</span>
+        </div>
+        <div>
+          <div class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">3</div>
+          <div class="text-sm font-medium text-on-surface-variant">Alerts</div>
+        </div>
+      </div>
+      <!-- Total Events -->
+      <div class="milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
+        <div class="flex justify-between items-start">
+          <span class="material-symbols-outlined text-primary-fixed-dim" data-icon="event">event</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Monthly</span>
+        </div>
+        <div>
+          <div class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">12</div>
+          <div class="text-sm font-medium text-on-surface-variant">Total Events</div>
+        </div>
+      </div>
+    </section>
+    <!-- Primary Actions -->
+    <section class="flex flex-col gap-4">
+      <button
+        class="high-signal-gradient-blue w-full h-20 rounded-xl flex items-center justify-between px-8 shadow-[0_12px_32px_-4px_rgba(49,107,243,0.3)] active:scale-[0.98] transition-transform">
+        <div class="text-left">
+          <div class="font-headline font-black text-xl tracking-tight text-white">CHECK-OUT</div>
+          <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70">Assign Equipment</div>
+        </div>
+        <span class="material-symbols-outlined text-white text-3xl" data-icon="arrow_outward">arrow_outward</span>
+      </button>
+      <button
+        class="high-signal-gradient-green w-full h-20 rounded-xl flex items-center justify-between px-8 shadow-[0_12px_32px_-4px_rgba(105,246,184,0.2)] active:scale-[0.98] transition-transform">
+        <div class="text-left">
+          <div class="font-headline font-black text-xl tracking-tight text-on-secondary-fixed">CHECK-IN</div>
+          <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-secondary-fixed/70">Return Gear</div>
+        </div>
+        <span class="material-symbols-outlined text-on-secondary-fixed text-3xl" data-icon="download">download</span>
+      </button>
+    </section>
+    <!-- Next Events -->
+    <section class="space-y-4">
+      <div class="flex justify-between items-end">
+        <h2 class="font-manrope font-extrabold text-xl tracking-tight text-on-surface">Next Events</h2>
+        <button class="text-xs font-bold uppercase tracking-widest text-primary">View Calendar</button>
+      </div>
+      <div class="space-y-3">
+        <!-- Event Card 1 -->
+        <div class="tonal-surface p-4 rounded-xl flex items-center gap-4">
+          <div
+            class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
+            <span class="text-[10px] font-bold uppercase text-on-surface-variant">Oct</span>
+            <span class="text-lg font-headline font-black text-primary">24</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold text-on-surface truncate">Neon Horizon Tour</h3>
+            <p class="text-sm text-on-surface-variant flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+              Madison Square Garden, NY
+            </p>
+          </div>
+          <div class="text-right shrink-0">
+            <div
+              class="inline-flex px-2 py-1 rounded bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-tighter">
+              In Prep
+            </div>
+          </div>
+        </div>
+        <!-- Event Card 2 -->
+        <div class="tonal-surface p-4 rounded-xl flex items-center gap-4">
+          <div
+            class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
+            <span class="text-[10px] font-bold uppercase text-on-surface-variant">Oct</span>
+            <span class="text-lg font-headline font-black text-primary">28</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold text-on-surface truncate">Blue Note Jazz Festival</h3>
+            <p class="text-sm text-on-surface-variant flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+              The Village, NY
+            </p>
+          </div>
+          <div class="text-right shrink-0">
+            <div
+              class="inline-flex px-2 py-1 rounded bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">
+              Pending
+            </div>
+          </div>
+        </div>
+        <!-- Event Card 3 -->
+        <div class="tonal-surface p-4 rounded-xl flex items-center gap-4 opacity-70">
+          <div
+            class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
+            <span class="text-[10px] font-bold uppercase text-on-surface-variant">Nov</span>
+            <span class="text-lg font-headline font-black text-primary">02</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold text-on-surface truncate">Electric Peaks Gala</h3>
+            <p class="text-sm text-on-surface-variant flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+              Alpine Stadium, CO
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- BottomNavBar -->
+  <nav
+    class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-6 px-4 bg-[#060e20]/70 backdrop-blur-xl shadow-[0_-12px_32px_-4px_rgba(222,229,255,0.08)] rounded-t-3xl">
+    <div class="flex flex-col items-center justify-center text-[#90abff] bg-[#316bf3]/10 rounded-xl p-2">
+      <span class="material-symbols-outlined" data-icon="home">home</span>
+      <span class="font-inter text-[10px] font-bold uppercase tracking-widest">Home</span>
+    </div>
+    <div class="goItens flex flex-col items-center justify-center text-[#a3aac4] p-2 hover:text-[#dee5ff]">
+      <span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+      <span class="font-inter text-[10px] font-bold uppercase tracking-widest">Stock</span>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+      <button href="cadastro.html"
+        class="w-14 h-14 rounded-full high-signal-gradient-blue shadow-[0_8px_24px_rgba(49,107,243,0.4)] flex items-center justify-center -translate-y-4 border-4 border-background">
+        <span class="material-symbols-outlined text-white text-3xl" data-icon="add"
+          style="font-variation-settings: 'FILL' 0, 'wght' 700;">add</span>
+      </button>
+    </div>
+    <div class="flex flex-col items-center justify-center text-[#a3aac4] p-2 hover:text-[#dee5ff]">
+      <span class="material-symbols-outlined" data-icon="event">event</span>
+      <span class="font-inter text-[10px] font-bold uppercase tracking-widest">Events</span>
+    </div>
+    <div class="flex flex-col items-center justify-center text-[#a3aac4] p-2 hover:text-[#dee5ff]">
+      <span class="material-symbols-outlined" data-icon="group">group</span>
+      <span class="font-inter text-[10px] font-bold uppercase tracking-widest">Team</span>
+    </div>
+  </nav>
+  <script>
+    const API_URL_ITENS = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/itens';
 
-  const goItens = document.querySelectorAll('.goItens');
-  goItens.forEach(btn => {
-  btn.addEventListener("click",()=>{
-    window.location.href= `view_equipment.html`;
-  });
-  });
-  
-  async function getTotalItens() {
-  const response = await fetch(API_URL_ITENS, {
-    headers: {
-      apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU',
-      Prefer: 'count=exact'
+    const goItens = document.querySelectorAll('.goItens');
+    goItens.forEach(btn => {
+      btn.addEventListener("click", () => {
+        window.location.href = `view_equipment.html`;
+      });
+    });
+
+    async function getTotalItens() {
+      const response = await fetch(API_URL_ITENS, {
+        headers: {
+          apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU',
+          Prefer: 'count=exact'
+        }
+      });
+
+      const contentRange = response.headers.get('content-range');
+      const total = contentRange.split('/')[1];
+
+      return Number(total);
     }
-  });
 
-  const contentRange = response.headers.get('content-range');
-  const total = contentRange.split('/')[1];
+    // uso
+    getTotalItens().then(total => {
+      document.getElementById('item-qtd').innerText = total;
+    });
+  </script>
+</body>
 
-  return Number(total);
-}
-
-// uso
-getTotalItens().then(total => {
-    document.getElementById('item-qtd').innerText = total ;
-});
-</script>
-</body></html>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#060e20",
+            "secondary-fixed": "#69f6b8",
+            "on-primary-container": "#001e5a",
+            "on-secondary-fixed": "#00452d",
+            "surface-bright": "#1f2b49",
+            "surface-container-high": "#141f38",
+            "error-container": "#9f0519",
+            "inverse-primary": "#0053dc",
+            "inverse-on-surface": "#4d556b",
+            "tertiary-container": "#fd4e4d",
+            "on-surface": "#dee5ff",
+            "tertiary-fixed-dim": "#ff7b74",
+            "surface-variant": "#192540",
+            "surface-tint": "#90abff",
+            "error-dim": "#d7383b",
+            "primary-fixed-dim": "#658eff",
+            "on-primary": "#002873",
+            "on-tertiary-fixed": "#3a0003",
+            "primary-fixed": "#7b9cff",
+            "secondary-fixed-dim": "#58e7ab",
+            "surface-container-low": "#091328",
+            "outline": "#6d758c",
+            "surface-container": "#0f1930",
+            "on-secondary": "#005a3c",
+            "on-secondary-fixed-variant": "#006544",
+            "on-background": "#dee5ff",
+            "on-surface-variant": "#a3aac4",
+            "on-primary-fixed-variant": "#00266e",
+            "on-tertiary-container": "#1f0001",
+            "on-error-container": "#ffa8a3",
+            "secondary": "#69f6b8",
+            "error": "#ff716c",
+            "surface": "#060e20",
+            "on-secondary-container": "#e1ffec",
+            "surface-dim": "#060e20",
+            "surface-container-lowest": "#000000",
+            "on-primary-fixed": "#000000",
+            "outline-variant": "#40485d",
+            "surface-container-highest": "#192540",
+            "tertiary-dim": "#ff716a",
+            "inverse-surface": "#faf8ff",
+            "primary-dim": "#316bf3",
+            "tertiary": "#ff716a",
+            "on-tertiary": "#490005",
+            "secondary-dim": "#58e7ab",
+            "secondary-container": "#006c49",
+            "on-error": "#490006",
+            "primary-container": "#7b9cff",
+            "on-tertiary-fixed-variant": "#79000e",
+            "primary": "#90abff",
+            "tertiary-fixed": "#ff928b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    body {
+      background-color: #060e20;
+      color: #dee5ff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .glass-nav {
+      background: rgba(6, 14, 32, 0.7);
+      backdrop-filter: blur(20px);
+    }
+  </style>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+  <!-- TopAppBar -->
+  <header class="bg-[#060e20] w-full top-0 sticky z-50 flex justify-between items-center px-6 py-4 w-full">
+    <div class="flex items-center gap-3">
+  
+           <span id="back"
+        class="material-symbols-outlined text-[#90abff] active:scale-95 duration-200 cursor-pointer">arrow_back</span>
+
+      <h1 class="font-['Manrope'] font-bold tracking-tight text-1xl text-[#dee5ff]">Equipamentos</h1>
+    </div>
+    <button class="text-[#90abff] hover:bg-[#0f1930] transition-colors p-2 rounded-lg">
+    </button>
+  </header>
+  <!-- Main Content Canvas -->
+  <main class="flex-1 px-4 pt-4 pb-32 max-w-md mx-auto w-full">
+    <!-- Search & Filter Section -->
+    <section class="mb-8">
+      <div class="relative group">
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg"
+          data-icon="search">search</span>
+        <input id="search-input" class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary/20 transition-all font-body"
+            placeholder="Buscar equipamentos..."
+            type="text"/>
+      </div>
+      <div class="flex gap-3 mt-4 overflow-x-auto pb-2 scrollbar-hide">
+        <button onclick="buscarLocal('')"
+          class="bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2 whitespace-nowrap">
+          <span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span> All Stock
+        </button>
+        <button onclick="buscarLocal('Funcionando')"
+          class="bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          Funcionando
+        </button>
+        <button onclick="buscarLocal('Defeito')"
+          class="bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          Defeito
+        </button>
+        <button onclick="buscarLocal('Manutencao')"
+          class="bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          Manutencão
+        </button>
+        <button onclick="buscarLocal('Evento')"
+          class="bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          Em Evento
+        </button>
+        <button onclick="buscarLocal('locado')"
+          class="bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          Locado
+        </button>
+        <button onclick="buscarLocal('analise')"
+          class="bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          Análise
+        </button>
+      </div>
+    </section>
+    <!-- Equipment Grid/List -->
+    <div class="space-y-4" id="equipment-list"></div>
+  </main>
+<button id="btn-topo"
+  class="fixed bottom-6 right-6 bg-primary text-black p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300">
+  <span class="material-symbols-outlined">arrow_upward</span>
+</button>
+  <!-- BottomNavBar -->
+  <!-- <nav
+    class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-6 px-4 bg-[#060e20]/70 backdrop-blur-xl shadow-[0_-12px_32px_-4px_rgba(222,229,255,0.08)] rounded-t-3xl">
+    <div class="flex flex-col items-center justify-center text-[#a3aac4] p-2 hover:text-[#dee5ff]">
+      <span class="material-symbols-outlined" data-icon="home">home</span>
+      <span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+    </div>
+    <div class="flex flex-col items-center justify-center text-[#90abff] bg-[#316bf3]/10 rounded-xl p-2">
+      <span class="material-symbols-outlined" data-icon="inventory_2"
+        style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+      <span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Stock</span>
+    </div>
+    <div class="relative -top-6">
+      <button
+        class="bg-gradient-to-br from-primary-container to-primary-dim w-16 h-16 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(49,107,243,0.4)] active:scale-90 transition-transform duration-150">
+        <span class="material-symbols-outlined text-on-primary text-3xl font-bold" data-icon="add">add</span>
+      </button>
+    </div>
+    <div class="flex flex-col items-center justify-center text-[#a3aac4] p-2 hover:text-[#dee5ff]">
+      <span class="material-symbols-outlined" data-icon="event">event</span>
+      <span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Events</span>
+    </div>
+    <div class="flex flex-col items-center justify-center text-[#a3aac4] p-2 hover:text-[#dee5ff]">
+      <span class="material-symbols-outlined" data-icon="group">group</span>
+      <span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Team</span>
+    </div>
+  </nav> -->
+  <script>
+    const API_URL_ITENS = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/itens';
+    const API_URL_TIPOS = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/tipos';
+    const API_URL_VOLTAGEM = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/voltagem';
+    const API_URL_CATEGORIA = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/categoria';
+    const API_URL_SITUACAO = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/situacao';
+    const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU';
+
+    let todosItens = [];
+    
+    const btnBack = document.getElementById("back");
+    btnBack.addEventListener("click",()=>{
+      history.go(-1)
+    });
+
+    // 🔥 CARREGAR UMA VEZ
+    async function carregarItens() {
+
+      const container = document.getElementById('equipment-list');
+
+      container.innerHTML = '<p class="text-center text-sm">Carregando...</p>';
+
+      try {
+        const response = await fetch(
+          //id,item,estado,local,codigo
+          `${API_URL_ITENS}?select=*,categoria(categoria),tipos(tipo),voltagens(voltagem),situacao(situacao)&order=id.asc`,
+          {
+            headers: {
+              apikey: API_KEY,
+              Authorization: `Bearer ${API_KEY}`
+            }
+          }
+        );
+
+        todosItens = await response.json();
+
+        console.log('Itens carregados:', todosItens);
+
+        renderizar(todosItens);
+
+      } catch (erro) {
+        console.error(erro);
+        container.innerHTML = '<p class="text-red-400 text-center">Erro ao carregar</p>';
+      }
+    }
+
+    // 🎯 RENDER
+    function renderizar(lista) {
+
+      const container = document.getElementById('equipment-list');  
+
+      if (!lista.length) {
+        container.innerHTML = '<p class="text-center text-sm">Nada encontrado</p>';
+        return;
+      }
+
+      let html = '';
+
+      lista.forEach(item => {
+        
+        const statusCor =
+          item.estado === 'Disponível'
+            ? 'bg-secondary/10 text-secondary'
+            : item.estado === 'Em uso'
+            ? 'bg-primary/10 text-primary'
+            : 'bg-tertiary/10 text-tertiary';
+
+        html += `
+          <div data-id="${item.id}" class="bg-surface-container p-4 rounded-xl shadow-lg border border-outline-variant/10 item">
+            <div class="flex gap-4">
+
+            
+
+              <div class="flex-1 flex flex-col justify-between">
+
+                <div>
+                  <div class="flex justify-between items-start">
+
+                    <h3 class="font-headline font-bold text-lg text-on-surface leading-tight">
+                      ${item.item || 'Sem nome'}
+                    </h3>
+
+                    <span class="${statusCor} px-8 py-2 rounded text-[15px] font-bold uppercase tracking-wider">
+                      ${item.codigo || 'Sem status'}
+                    </span>
+
+                  </div>
+
+                  <p class="text-on-surface-variant text-xs mt-1 font-body">
+                    Local: ${item.local || 'Sem local'} 
+                  </p>
+                  <p class="text-on-surface-variant text-xs mt-1 font-body">
+                    Situação: ${item.situacao.situacao || 'Sem dados'} 
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        `;    
+        
+      });
+
+      container.innerHTML = html;
+      
+    }
+
+    document.getElementById('equipment-list').addEventListener('click', (e) => {
+
+      const el = e.target.closest('.item');
+
+      if (!el) return;
+
+      const id = el.dataset.id;
+
+      const item = todosItens.find(i => i.id == id);
+      console.log(item);
+
+      // salva o objeto (rápido)
+      localStorage.setItem('itemSelecionado', JSON.stringify(item));
+
+      // 👉 passa o ID na URL
+      window.location.href = `details_equipment.html`;
+
+    });
+
+
+
+    // 🔎 BUSCA LOCAL (INSTANTÂNEA)
+    function buscarLocal(termo) {
+      console.log(termo);
+      
+      const texto = termo.toLowerCase();
+
+      const filtrados = todosItens.filter(item =>
+        (item.item || '').toLowerCase().includes(texto) ||
+        (item.local || '').toLowerCase().includes(texto) ||
+        (item.codigo || '').toLowerCase().includes(texto) ||
+        (item.situacao.situacao || '').toLowerCase().includes(texto)
+      );
+
+      renderizar(filtrados);
+    }
+
+    // ⌨️ INPUT COM DEBOUNCE
+    let timeoutBusca;
+
+    document.getElementById('search-input')
+    .addEventListener('input', (e) => {
+
+      clearTimeout(timeoutBusca);
+
+      timeoutBusca = setTimeout(() => {
+        buscarLocal(e.target.value);
+      }, 300);
+    });
+    
+    const btnTopo = document.getElementById('btn-topo');
+
+// Mostrar/esconder botão ao rolar
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    btnTopo.classList.remove('opacity-0', 'pointer-events-none');
+    btnTopo.classList.add('opacity-100');
+  } else {
+    btnTopo.classList.add('opacity-0', 'pointer-events-none');
+    btnTopo.classList.remove('opacity-100');
+  }
+});
+
+// Ação de voltar ao topo
+btnTopo.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+    // 🚀 START
+    carregarItens();
+  </script>
+</body>
+
+</html>

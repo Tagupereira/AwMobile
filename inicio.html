@@ -165,11 +165,11 @@
       <div class="milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
         <div class="flex justify-between items-start">
           <span class="material-symbols-outlined text-secondary" data-icon="sync_alt">sync_alt</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-secondary/70">Flowing</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-secondary/70">locado</span>
         </div>
         <div>
-          <div class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">45</div>
-          <div class="text-sm font-medium text-on-surface-variant">In Use</div>
+          <div id="locado-qtd" class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">0</div>
+          <div class="text-sm font-medium text-on-surface-variant">itens locados</div>
         </div>
       </div>
       <!-- Alerts -->
@@ -179,21 +179,23 @@
           <span class="text-[10px] font-bold uppercase tracking-widest text-tertiary/70">Manutenção</span>
         </div>
         <div>
-          <div class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">3</div>
-          <div class="text-sm font-medium text-on-surface-variant">Alerts</div>
+          <div id="manutencao-qtd" class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">0</div>
+          <div class="text-sm font-medium text-on-surface-variant">Com defeitos</div>
         </div>
       </div>
       <!-- Total Events -->
       <div class="milled-card p-5 rounded-xl flex flex-col justify-between aspect-square">
         <div class="flex justify-between items-start">
           <span class="material-symbols-outlined text-primary-fixed-dim" data-icon="event">event</span>
-          <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Monthly</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Em evento</span>
         </div>
         <div>
-          <div class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">12</div>
-          <div class="text-sm font-medium text-on-surface-variant">Total Events</div>
+          <div id="evento-qtd" class="font-headline font-extrabold text-4xl text-on-surface tracking-tighter">0</div>
+          <div class="text-sm font-medium text-on-surface-variant">Usando agora</div>
         </div>
       </div>
+      
+      
     </section>
     <!-- Primary Actions -->
     <section class="flex flex-col gap-4">
@@ -319,25 +321,64 @@
     });
 
     async function getTotalItens() {
-      const response = await fetch(API_URL_ITENS, {
-        headers: {
-          apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU',
-          Prefer: 'count=exact'
-        }
-      });
 
-      const contentRange = response.headers.get('content-range');
-      const total = contentRange.split('/')[1];
+      let url = API_URL_ITENS;
 
-      return Number(total);
+      const response = await fetch(
+          //id,item,estado,local,codigo
+          `${API_URL_ITENS}?select=*,categoria(categoria),tipos(tipo),voltagens(voltagem),situacao(situacao)&order=id.asc`,
+          {
+            headers: {
+              apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU',
+
+            }
+          }
+        );
+      return await response.json();
     }
 
-    // uso
-    getTotalItens().then(total => {
-      document.getElementById('item-qtd').innerText = total;
+    getTotalItens().then(itens => {
+      console.log(itens);
+      
+      
+      // total
+      document.getElementById('item-qtd').innerText = itens.length;
+
+
+      // defeito
+      const defeito = itens.filter(
+        item => item.situacao.situacao === "defeito"
+      );      
+      // manutencao
+      const manutencao = itens.filter(
+        item => item.situacao.situacao === "manutencao"
+      );
+      // em evento
+      const evento= itens.filter(
+        item => item.situacao.situacao === "evento"
+      );
+      // locado
+      const locado= itens.filter(
+        item => item.situacao.situacao === "locado"
+      );
+      // analise
+      const analise= itens.filter(
+        item => item.situacao.situacao === "analise"
+      );
+      
+      
+
+      document.getElementById('manutencao-qtd').innerText = manutencao.length;
+      //document.getElementById('defeito-qtd').innerText = defeito.length;
+      document.getElementById('evento-qtd').innerText = evento.length;
+      document.getElementById('locado-qtd').innerText = locado.length;
+      //document.getElementById('analise-qtd').innerText = analise.length;
+
     });
+
   </script>
+
 </body>
 
 </html>

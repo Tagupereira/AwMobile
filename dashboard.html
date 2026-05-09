@@ -338,9 +338,7 @@
       return await response.json();
     }
 
-    getTotalItens().then(itens => {
-      console.log(itens);
-      
+    getTotalItens().then(itens => {      
       
       // total
       document.getElementById('item-qtd').innerText = itens.length;

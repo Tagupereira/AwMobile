@@ -342,7 +342,7 @@
       const filtrados = todosItens.filter(item =>
         (item.item || '').toLowerCase().includes(texto) ||
         (item.local || '').toLowerCase().includes(texto) ||
-        String(item.patrimonio || '') === texto ||
+        (item.patrimonio || '').includes(texto) ||
         (item.situacao.situacao || '').toLowerCase().includes(texto)
       );
 

@@ -180,9 +180,10 @@
                         <span class="material-symbols-outlined text-xs" data-icon="copyright">copyright</span>
                         TIPO
                     </label>
-                    <input id="item-tipo"
-                        class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/50 transition-all"
-                        placeholder="e.g., Shure" type="text" />
+                    <select id="item-tipo"
+                        class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface appearance-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer">
+                        
+                    </select>
                 </div>
                 <div class="space-y-2">
                     <label
@@ -190,9 +191,10 @@
                         <span class="material-symbols-outlined text-xs" data-icon="copyright">copyright</span>
                         VOLTAGEM
                     </label>
-                    <input id="item-voltagem"
-                        class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/50 transition-all"
-                        placeholder="110/220" type="text" />
+                     <select id="item-voltagem"
+                        class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface appearance-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer">
+                        
+                    </select>
                 </div>
             </div>
 
@@ -208,9 +210,7 @@
                         class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface appearance-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer">
                         
                     </select>
-                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">
-                        <span class="material-symbols-outlined" data-icon="unfold_more">unfold_more</span>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -245,9 +245,10 @@
                         <span class="material-symbols-outlined text-xs" data-icon="calendar_today">calendar_today</span>
                         SITUAÇÃO
                     </label>
-                    <input id="item-situacao"
-                        class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all [color-scheme:dark]"
-                        type="text" />
+                   <select id="item-situacao"
+                        class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface appearance-none focus:ring-2 focus:ring-primary/50 transition-all cursor-pointer">
+                        
+                    </select>
                 </div>
             </div>
             <!-- Technical Specifications -->
@@ -323,8 +324,9 @@
     const API_URL_ITENS = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/itens';
     const API_URL_CATEGORIAS = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/categoria';
     const API_URL_TIPOS = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/tipos';
-    const API_URL_VOLTAGEM = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/voltagem';
+    const API_URL_VOLTAGEM = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/voltagens';
     const API_URL_SITUACAO = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/situacao';
+    
     const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU';
 
     const btnBack = document.getElementById("back")
@@ -371,7 +373,7 @@
         alert("Erro ao carregar item");
     }
 
-    async function buscarCategoria(item) {
+    async function buscarCategoria(categoria) {
       
         const response = await fetch(`${API_URL_CATEGORIAS}?select=*&order=id.asc`,
           {
@@ -397,24 +399,118 @@
 
         });
 
-        select.value = item;
+        select.value = categoria;
             
     }
     
+    async function buscarVoltagem(voltagem) {
+      
+        const response = await fetch(`${API_URL_VOLTAGEM}?select=*&order=id_voltagem.asc`,
+          {
+            headers: {
+              apikey: API_KEY,
+              Authorization: `Bearer ${API_KEY}`
+            }
+          }
+        );
+        
+        const dataCat = await response.json();
+        
+        const selectVolt = document.getElementById("item-voltagem");
+        
+        dataCat.forEach(volt => {
+            
+            const option = document.createElement("option");
+
+            option.value = volt.id_voltagem;
+            option.textContent = volt.voltagem;
+
+            selectVolt.appendChild(option);
+
+        });
+
+        selectVolt.value = voltagem;
+            
+    }
+
+    async function buscarTipo(itemTipo) {
+      
+        const response = await fetch(`${API_URL_TIPOS}?select=*&order=id.asc`,
+          {
+            headers: {
+              apikey: API_KEY,
+              Authorization: `Bearer ${API_KEY}`
+            }
+          }
+        );
+        
+        const dataCat = await response.json();
+        
+        const selectTipo = document.getElementById("item-tipo");
+        
+        dataCat.forEach(tipo => {
+            
+            const option = document.createElement("option");
+
+            option.value = tipo.id;
+            option.textContent = tipo.tipo.toUpperCase();
+
+            selectTipo.appendChild(option);
+
+        });
+
+        selectTipo.value = itemTipo;
+            
+    }
+
+    async function buscarSituacao(situacao) {
+      
+        const response = await fetch(`${API_URL_SITUACAO}?select=*&order=id.asc`,
+          {
+            headers: {
+              apikey: API_KEY,
+              Authorization: `Bearer ${API_KEY}`
+            }
+          }
+        );
+        
+        const dataCat = await response.json();
+        
+        const selectTipo = document.getElementById("item-situacao");
+        
+        dataCat.forEach(sit => {
+            
+            const option = document.createElement("option");
+
+            option.value = sit.id;
+            option.textContent = sit.situacao.toUpperCase();
+
+            selectTipo.appendChild(option);
+
+        });
+
+        selectTipo.value = situacao;
+            
+    }
+
+
     function preencherTela(item) {
 
-        
         document.getElementById('item-nome').value = `${item.item}` || 'Sem nome' ;
         document.getElementById('item-local').value = `${item.local.toUpperCase() || '-'}` ;
         document.getElementById('item-serial').value = `${item.n_serie || '-'}` ;
         document.getElementById('item-cod').value = String(`${item.patrimonio}`).padStart(4, '0');
-        document.getElementById('item-tipo').value = `${item.tipos.tipo.toUpperCase()}` ;
-        document.getElementById('item-categoria').value = `${item.categoria.categoria}` ;
+        //document.getElementById('item-tipo').value = `${item.tipos.tipo.toUpperCase()}` ;
+        //document.getElementById('item-categoria').value = `${item.categoria.categoria}` ;
         document.getElementById('item-obs').value = `${item.observacao}` ;
         //document.getElementById('item-voltagem').value = `${item.voltagens.voltagem}` ;
         //document.getElementById('item-situacao').value = `${item.situacao.situacao}` ;
 
-        buscarCategoria(item.id_categoria)
+        buscarCategoria(item.id_categoria);
+        buscarVoltagem(item.id_voltagem);
+        buscarTipo(item.id_tipos);
+        buscarSituacao(item.id_situacoes);
+        
     }
 
     

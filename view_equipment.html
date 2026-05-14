@@ -228,7 +228,7 @@
       try {
         const response = await fetch(
           //id,item,estado,local,codigo
-          `${API_URL_ITENS}?select=*,categoria(categoria),tipos(tipo),voltagens(voltagem),situacao(situacao)&order=id.asc`,
+          `${API_URL_ITENS}?select=*,categoria(categoria,img),tipos(tipo),voltagens(voltagem),situacao(situacao)&order=id.asc`,
           {
             headers: {
               apikey: API_KEY,
@@ -249,6 +249,14 @@
       }
     }
 
+    const coresStatus = {
+        funcionando: 'bg-green-500/15 text-green-400',
+        manutencao: 'bg-yellow-500/15 text-yellow-400',
+        defeito: 'bg-red-500/15 text-red-400',
+        evento: 'bg-blue-500/15 text-blue-400',
+        locado: 'bg-purple-500/15 text-purple-400',
+        analise: 'bg-orange-500/15 text-orange-400'
+      };
     // 🎯 RENDER
     function renderizar(lista) {
 
@@ -266,11 +274,18 @@
         const patrimonio = String(`${item.patrimonio}`).padStart(4, '0');
         
         const statusCor =
-          item.estado === 'Disponível'
-            ? 'bg-secondary/10 text-secondary'
-            : item.estado === 'Em uso'
-            ? 'bg-primary/10 text-primary'
-            : 'bg-tertiary/10 text-tertiary';
+          item.situacao.situacao === 'funcionando'
+            ? coresStatus.funcionando:
+            item.situacao.situacao === 'defeito'
+            ? coresStatus.defeito:
+            item.situacao.situacao === 'manutencao'
+            ? coresStatus.manutencao:
+            item.situacao.situacao === 'evento'
+            ? coresStatus.evento:
+            item.situacao.situacao === 'locado'
+            ? coresStatus.locado:
+            item.situacao.situacao === 'analise'
+            ? coresStatus.analise: "";
 
         html += `
           <div data-id="${item.id}" class="bg-surface-container p-4 rounded-xl shadow-lg border border-outline-variant/10 item">
@@ -287,15 +302,16 @@
                       ${item.item || 'Sem nome'}
                     </h3>
 
-                    <span class="${statusCor} px-8 py-2 rounded text-[15px] font-bold uppercase tracking-wider">
+                    <span class="${statusCor} px-5 py-2 rounded text-[15px] font-bold uppercase tracking-wider">
                       #${patrimonio || 'Sem status'}
                     </span>
 
                   </div>
 
-                  <p class="text-on-surface-variant text-xs mt-1 font-body">
-                    Local: ${item.local || 'Sem local'} 
+                  <p class="text-on-surface-variant text-[10px]  font-body">
+                    Categoria: ${item.categoria.categoria || 'Sem Categoria'} 
                   </p>
+                  
                   <p class="text-on-surface-variant text-xs mt-1 font-body">
                     Situação: ${item.situacao.situacao || 'Sem dados'} 
                   </p>
@@ -345,6 +361,7 @@
         (item.item || '').toLowerCase().includes(texto) ||
         (item.local || '').toLowerCase().includes(texto) ||
         (item.patrimonio || '').includes(texto) ||
+        (item.categoria.categoria || '').includes(texto) ||
         (item.situacao.situacao || '').toLowerCase().includes(texto)
       );
 

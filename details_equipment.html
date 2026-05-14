@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta name="description" content="TD desenvolvimento digital"/>
+  <meta name="description" content="TD desenvolvimento digital" />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap"
     rel="stylesheet" />
@@ -104,7 +104,9 @@
       background: rgba(31, 43, 73, 0.7);
       backdrop-filter: blur(20px);
     }
-
+    .textShadown{
+      text-shadow: black 0.1em 0.1em 0.2em
+    }
   </style>
 </head>
 
@@ -124,17 +126,19 @@
   <main class="mt-20 px-4 md:px-8 max-w-5xl mx-auto">
     <!-- Hero Section: High Quality Image -->
     <div class="relative w-full aspect-video h-[250px] rounded-[2rem] overflow-hidden mb-8 shadow-2xl">
-      <img class="w-full h-full object-cover"
-        src="https://images.unsplash.com/photo-1525022340574-113732565927?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE3fHx8ZW58MHx8fHx8" />
+      <img id="item-img" class="w-full h-full object-cover"
+        src="" />
       <div class="absolute inset-0 bg-gradient-to-t from-[#060e20] via-transparent to-transparent"></div>
-      <div class="absolute bottom-6 left-8">
-              
-        <h3 id="item-nome" class="font-headline text-3xl font-extrabold tracking-tight text-on-surface">Nome do item</h3>
+      <div class="absolute bottom-6 left-8 textShadown">
+
+        <h3 id="item-nome" class="font-headline text-3xl font-extrabold tracking-tight text-on-surface">Nome do item
+        </h3>
         <p id="item-categoria" class="text-on-surface-variant font-medium">Categoria</p>
         <p id="item-serie" class="text-on-surface-variant font-medium">Numero Serie</p>
-        <span id="item-situacao" class="bg-secondary/15 text-secondary px-3 py-1 rounded-full text-[20px] font-bold tracking-widest uppercase mb-2 inline-block">AVAILABLE</span>
-        
-        
+        <span id="item-situacao"
+          class="bg-secondary/15 text-secondary px-3 py-1 rounded-full text-[20px] font-bold tracking-widest uppercase mb-2 inline-block">AVAILABLE</span>
+
+
       </div>
 
     </div>
@@ -156,8 +160,8 @@
         </div>
         <span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Service</span>
       </button>
-      <button
-        id="editItem" class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container hover:bg-[#0f1930] transition-colors group active:scale-95">
+      <button id="editItem"
+        class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-surface-container hover:bg-[#0f1930] transition-colors group active:scale-95">
         <div
           class="w-12 h-12 rounded-full bg-outline-variant/30 flex items-center justify-center text-on-surface group-hover:scale-110 transition-transform">
           <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit_note</span>
@@ -178,7 +182,7 @@
       </div>
       <!-- Bento-style Specs Grid -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        
+
         <div class="bg-surface-container p-5 rounded-2xl flex flex-col gap-1">
           <span class="text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Patrimônio</span>
           <span id="item-cod" class="text-1xl font-headline font-extrabold text-on-surface">n/d</span>
@@ -207,7 +211,7 @@
               <p id="item-obs" class="font-bold text-on-surface">Neon Horizon Tour</p>
               <p class="text-xs text-on-surface-variant">Registrado em • Jun 12 - 2024</p>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -262,17 +266,17 @@
     </div>
   </main>
 
-<script>
+  <script>
     const API_URL_ITENS = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/itens';
     const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU';
 
     const btnBack = document.getElementById("back")
-    btnBack.addEventListener("click",()=>{
+    btnBack.addEventListener("click", () => {
       history.go(-1);
       // limpa cache
       localStorage.removeItem('itemSelecionado');
     })
-      
+
     // 🔥 pega ID da URL
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
@@ -301,11 +305,11 @@
     }
 
     const editItem = document.getElementById("editItem");
-    
-    editItem.addEventListener("click",()=>{
-      
+
+    editItem.addEventListener("click", () => {
+
       window.location.href = `cadastro.html?id=${itemLS.id}`;
-      
+
     })
 
     // 🔥 BUSCAR DO SUPABASE
@@ -338,17 +342,17 @@
     // 🎯 PREENCHER TELA
     function preencherTela(item) {
 
-      document.getElementById('item-nome').innerText = `${item.item}` || 'Sem nome' ;
-      document.getElementById('item-info').innerText = `${item.local || '-'}` ;
-      document.getElementById('item-serie').innerText = `• SN: ${item.n_serie || '-'}` ;
-      document.getElementById('item-cod').innerText = "#"+String(`${item.patrimonio}`).padStart(6, '0');
-      document.getElementById('item-tipo').innerText = `${item.tipos.tipo.toUpperCase()}` ;
-      document.getElementById('item-categoria').innerText = `${item.categoria.categoria}` ;
-      document.getElementById('item-voltagem').innerText = `${item.voltagens.voltagem}` ;
-      document.getElementById('item-situacao').innerText = `${item.situacao.situacao}` ;
-      document.getElementById('item-obs').innerText = `${item.observacao}` ;
+      document.getElementById('item-nome').innerText = `${item.item}` || 'Sem nome';
+      document.getElementById('item-info').innerText = `${item.local || '-'}`;
+      document.getElementById('item-serie').innerText = `• SN: ${item.n_serie || '-'}`;
+      document.getElementById('item-cod').innerText = "#" + String(`${item.patrimonio}`).padStart(6, '0');
+      document.getElementById('item-tipo').innerText = `${item.tipos.tipo.toUpperCase()}`;
+      document.getElementById('item-categoria').innerText = `${item.categoria.categoria}`;
+      document.getElementById('item-voltagem').innerText = `${item.voltagens.voltagem}`;
+      document.getElementById('item-situacao').innerText = `${item.situacao.situacao}`;
+      document.getElementById('item-obs').innerText = `${item.observacao}`;
 
-      //document.getElementById('item-img').src = item.imagem || 'https://placehold.co/800x400';
+      document.getElementById('item-img').src = item.categoria.img || 'https://placehold.co/800x400';
 
       const statusEl = document.getElementById('item-situacao');
 
@@ -388,8 +392,8 @@
       `;
     }
 
-</script>
-  
+  </script>
+
 </body>
 
 </html>

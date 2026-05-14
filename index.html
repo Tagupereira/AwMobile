@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="TD desenvolvimento digital"/>
+  
 
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -45,6 +45,8 @@
     </div>
   </div>
 
+   
+
   <script>
     const dev = document.getElementById("dev");
     dev.addEventListener("click",()=>{
@@ -67,7 +69,7 @@
           {
             headers: {
               "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU",
-              "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU "
+              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU "
             }
           }
         );
@@ -78,8 +80,8 @@
           // LOGIN OK → só redireciona
           const user = data[0].user;
 
-          window.location.href = "dashboard.html";
           sessionStorage.setItem("user", user);
+          window.location.href = "dashboard.html";
           
           
         } else {
@@ -92,6 +94,9 @@
     }
   </script>
 
+ 
+
 </body>
+
 </html>
 

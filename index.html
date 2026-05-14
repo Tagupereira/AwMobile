@@ -25,7 +25,7 @@
 
     <h1 class="text-2xl font-bold text-center mb-6">Login</h1>
 
-    <input id="email" type="email" placeholder="Email"
+    <input id="email" type="email" placeholder="Usuário"
       class="w-full mb-4 p-3 rounded-xl bg-[#091328] outline-none">
 
     <input id="senha" type="password" placeholder="Senha"
@@ -73,9 +73,14 @@
 
         if (data.length > 0) {
           // LOGIN OK → só redireciona
+          const user = data[0].user;
+
           window.location.href = "dashboard.html";
+          sessionStorage.setItem("user", user);
+          
+          
         } else {
-          erro.innerText = "Email ou senha inválidos";
+          erro.innerText = "Login ou senha inválidos";
         }
 
       } catch (e) {

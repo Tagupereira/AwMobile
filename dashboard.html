@@ -139,7 +139,7 @@
             data-alt="Professional profile portrait of a female sound engineer with soft studio lighting and a neutral expression"
             src="logo2.png" />
         </div>
-        <h1 class="font-manrope font-bold text-2xl tracking-tight text-[#dee5ff]">AW eventos</h1>
+        <h1 id="userSession" class="font-manrope font-bold text-2xl tracking-tight text-[#dee5ff]">AW Eventos</h1>
       </div>
       <button
         class="w-10 h-10 rounded-xl flex items-center justify-center text-[#90abff] hover:bg-[#0f1930] transition-colors duration-200">
@@ -295,7 +295,7 @@
       <span class="font-inter text-[10px] font-bold uppercase tracking-widest">Stock</span>
     </div>
     <div class="flex flex-col items-center justify-center">
-      <button href="cadastro.html"
+      <button id="cadastro"
         class="w-14 h-14 rounded-full high-signal-gradient-blue shadow-[0_8px_24px_rgba(49,107,243,0.4)] flex items-center justify-center -translate-y-4 border-4 border-background">
         <span class="material-symbols-outlined text-white text-3xl" data-icon="add"
           style="font-variation-settings: 'FILL' 0, 'wght' 700;">add</span>
@@ -311,7 +311,21 @@
     </div>
   </nav>
   <script>
+
     const API_URL_ITENS = 'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/itens';
+    
+    const userSession = sessionStorage.getItem("user");
+    //userSession.charAt(0).toUpperCase() -> pega a primeira letra e deixa maiuscula
+    //userSession.slice(1).toLowerCase() -> paga o retante e deixa minuscula
+    const userFormat = userSession.charAt(0).toUpperCase()+userSession.slice(1).toLowerCase();
+    
+    const idSession = document.getElementById("userSession");
+    idSession.innerText = userFormat;
+
+    const cadastro = document.getElementById("cadastro");
+    cadastro.addEventListener("click", ()=>{
+      window.location.href = `cadastro.html`;
+    })
 
     const goItens = document.querySelectorAll('.goItens');
     goItens.forEach(btn => {

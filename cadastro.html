@@ -338,7 +338,7 @@
     const params = new URLSearchParams(window.location.search);
 
     const id = params.get("id");
-    console.log(id);
+
 
     async function buscarDoServidor(id) {
       try {
@@ -354,7 +354,7 @@
         
         const data = await response.json();
         
-        if (!data.length) return erroTela();
+        //if (!data.length) return erroTela();
         
         console.log(data);
         const item = data[0];
@@ -363,14 +363,79 @@
 
       } catch (e) {
         console.error(e);
-        erroTela();
+
+        //cadastrarItem();
+        buscarCategoria(1);
+        buscarVoltagem(1);
+        buscarSituacao(1);
+        buscarTipo(1);
       }
     }
 
     buscarDoServidor(id);
 
+    // async function cadastrarItem(){
+        
+    //     ///////////////// categorias
+    //     const categorias = await fetch(
+    //       `${API_URL_CATEGORIAS}?select=*`,
+    //       {
+    //         headers: {
+    //           apikey: API_KEY,
+    //           Authorization: `Bearer ${API_KEY}`
+    //         }
+    //       }
+    //     );
+        
+    //     const catItens = await categorias.json();
+
+    //     //////////////// tipos
+    //     const tipos = await fetch(
+    //       `${API_URL_TIPOS}?select=*`,
+    //       {
+    //         headers: {
+    //           apikey: API_KEY,
+    //           Authorization: `Bearer ${API_KEY}`
+    //         }
+    //       }
+    //     );
+        
+    //     const tipoItens = await tipos.json();
+         
+    //     //////////////// voltagens
+    //     const voltagens = await fetch(
+    //       `${API_URL_VOLTAGEM}?select=*`,
+    //       {
+    //         headers: {
+    //           apikey: API_KEY,
+    //           Authorization: `Bearer ${API_KEY}`
+    //         }
+    //       }
+    //     );
+       
+    //     const voltItens = await voltagens.json();
+    //      //////////////// situacao
+    //     const situacoes = await fetch(
+    //       `${API_URL_SITUACAO}?select=*`,
+    //       {
+    //         headers: {
+    //           apikey: API_KEY,
+    //           Authorization: `Bearer ${API_KEY}`
+    //         }
+    //       }
+    //     );
+    //     const sitItens = await situacoes.json();
+
+        
+    //     console.log(catItens);
+    //     console.log(tipoItens);
+    //     console.log(voltItens);
+    //     console.log(sitItens);
+        
+    // }
+
     function erroTela(){
-        alert("Erro ao carregar item");
+        alert("erro")
     }
 
     async function buscarCategoria(categoria) {

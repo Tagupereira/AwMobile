@@ -1,0 +1,132 @@
+const API_URL =
+  'https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/';
+
+const API_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU';
+
+
+//Buscar todos itens
+async function listarItens() {
+
+  const response = await fetch(
+    `${API_URL}itens?select=*`,
+    {
+      headers: {
+        apikey: API_KEY,
+        Authorization: `Bearer ${API_KEY}`
+      }
+    }
+  );
+
+  const data = await response.json();
+
+  console.log(data);
+
+}
+
+//READ (BUSCAR POR ID)
+async function buscarItem(id) {
+
+  const response = await fetch(
+    `${API_URL}itens?id=eq.${id}&select=*`,
+    {
+      headers: {
+        apikey: API_KEY,
+        Authorization: `Bearer ${API_KEY}`
+      }
+    }
+  );
+
+  const data = await response.json();
+
+  console.log(data[0]);
+
+}
+
+//CREATE (INSERIR)
+async function criarItem() {
+
+  const novoItem = {
+    item: 'Mesa Yamaha',
+    patrimonio: '0005',
+    local: 'Estoque',
+    id_categoria: 1,
+    id_tipos: 2,
+    id_situacao: 1
+  };
+
+  const response = await fetch(API_URL+"itens", {
+    method: 'POST',
+    headers: {
+      apikey: API_KEY,
+      Authorization: `Bearer ${API_KEY}`,
+      'Content-Type': 'application/json',
+      Prefer: 'return=representation'
+    },
+    body: JSON.stringify(novoItem)
+  });
+
+  const data = await response.json();
+
+  console.log(data);
+
+}
+
+//UPDATE (EDITAR)
+async function editarItem(id) {
+
+  const itemAtualizado = {
+    item: 'Mesa Yamaha EDITADA',
+    local: 'Palco A'
+  };
+
+  const response = await fetch(
+    `${API_URL}itens?id=eq.${id}`,
+    {
+      method: 'PATCH',
+      headers: {
+        apikey: API_KEY,
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+        Prefer: 'return=representation'
+      },
+      body: JSON.stringify(itemAtualizado)
+    }
+  );
+
+  const data = await response.json();
+
+  console.log(data);
+
+}
+
+//DELETE (EXCLUIR)
+async function deletarItem(id) {
+
+  const response = await fetch(
+    `${API_URL}itens?id=eq.${id}`,
+    {
+      method: 'DELETE',
+      headers: {
+        apikey: API_KEY,
+        Authorization: `Bearer ${API_KEY}`
+      }
+    }
+  );
+
+  if(response.ok){
+    console.log('Item deletado');
+  }
+
+}
+
+
+// api.js
+export async function listarItens(){}
+
+export async function criarItem(){}
+
+export async function editarItem(){}
+
+export async function deletarItem(){}
+

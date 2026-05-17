@@ -34,7 +34,7 @@
     <input id="senha" type="password" placeholder="Senha"
       class="w-full mb-6 p-3 rounded-xl bg-[#091328] outline-none">
 
-    <button onclick="login()"
+    <button id="btn-login"
       class="w-full bg-blue-600 p-3 rounded-xl font-bold">
       Entrar
     </button>
@@ -47,52 +47,7 @@
 
    
 
-  <script>
-    const dev = document.getElementById("dev");
-    dev.addEventListener("click",()=>{
-        window.open(
-        "https://www.instagram.com/tagu.designer",
-        "_blank"
-    );
-    })
-
-    async function login() {
-      const email = document.getElementById('email').value;
-      const senha = document.getElementById('senha').value;
-      const erro = document.getElementById('erro');
-
-      erro.innerText = "";
-
-      try {
-        const res = await fetch(
-          `https://uxxcdfwndahyuefupsds.supabase.co/rest/v1/acesso?user=eq.${email}&password=eq.${senha}`,
-          {
-            headers: {
-              "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU",
-              "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4eGNkZnduZGFoeXVlZnVwc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4NDg4NzYsImV4cCI6MjA5MzQyNDg3Nn0.YbgoHHOeAvmtNJRtrCIYhG33c5IRwP7DWNwXn4QxkWU "
-            }
-          }
-        );
-
-        const data = await res.json();
-
-        if (data.length > 0) {
-          // LOGIN OK → só redireciona
-          const user = data[0].user;
-
-          sessionStorage.setItem("user", user);
-          window.location.href = "dashboard.html";
-          
-          
-        } else {
-          erro.innerText = "Login ou senha inválidos";
-        }
-
-      } catch (e) {
-        erro.innerText = "Erro ao conectar";
-      }
-    }
-  </script>
+  <script type="module" src="js/index.js"></script>
 
  
 

@@ -1,4 +1,6 @@
 import { API_URL, API_KEY } from "../config.js" ;
+import { showModal } from "./modal.js";
+import { showToast } from "./toast.js";
 
     const btnBack = document.querySelectorAll('.backBtn');
     btnBack.forEach(btn => {
@@ -7,14 +9,12 @@ import { API_URL, API_KEY } from "../config.js" ;
         });
     });
 
+    const buttonActionPage = document.getElementById("btn-action");
+    const buttonActionCancel = document.getElementById("btn-cancel");
+
     const btnAction = document.getElementById("actionCad");
     const pageName = document.getElementById("namePage");
 
-    btnAction.addEventListener("click",()=>{
-        console.log("clicou dados");
-        
-        dadosItem();
-    })
     const params = new URLSearchParams(window.location.search);
 
     const id = params.get("id");
@@ -35,6 +35,34 @@ import { API_URL, API_KEY } from "../config.js" ;
         pageName.innerText = "Cadastrar novo";
     }
 
+    const modalConfig = modoEdicao? {
+
+            title: 'Editar Item',
+
+            message: 'Deseja salvar as alterações?',
+
+            confirmText: 'Salvar',
+
+            toast: {
+            message: 'Alterações salvas',
+            type: 'success'
+            }
+
+        }
+        : {
+
+            title: 'Cadastrar Item',
+
+            message: 'Deseja cadastrar novo item?',
+
+            confirmText: 'Cadastrar',
+
+            toast: {
+            message: 'Item cadastrado',
+            type: 'success'
+            }
+
+        };
 
     async function buscarDoServidor(id) {
 
@@ -255,12 +283,8 @@ import { API_URL, API_KEY } from "../config.js" ;
         document.getElementById('item-local').value = `${item.local.toUpperCase() || '-'}`;
         document.getElementById('item-serial').value = `${item.n_serie || '-'}`;
         document.getElementById('item-cod').value = String(`${item.patrimonio}`).padStart(6, '0');
-        //document.getElementById('item-tipo').value = `${item.tipos.tipo.toUpperCase()}` ;
-        //document.getElementById('item-categoria').value = `${item.categoria.categoria}` ;
         document.getElementById('item-obs').value = `${item.observacao}`;
-        //document.getElementById('item-voltagem').value = `${item.voltagens.voltagem}` ;
-        //document.getElementById('item-situacao').value = `${item.situacao.situacao}` ;
-
+        
         btnAction.innerText = "Salvar Alterações";
         pageName.innerText = "Editar equipamento";
 
@@ -283,24 +307,33 @@ import { API_URL, API_KEY } from "../config.js" ;
         const observacao = document.getElementById('item-obs').value;
 
         const dados = [cod,item,tipo,voltagem,categoria,local,serial,situacao,observacao];
-                
-        //criarItem(voltagem);
-        editarItem(5, dados);
-        //deletarItem(8);
-        
-        
+           
+        if(modoEdicao){ 
+            editarItem(id, dados);
+            return
+        }
 
+        criarItem(dados);
+        
     }
 
-
-    async function criarItem(nome) {
+    async function criarItem(dados) {
+        console.log("passou");
     
-    const novoItem = {
-            nome: nome,
+        const novoItem = {
+            patrimonio: dados[0],
+            item: dados[1],
+            id_tipo: dados[2],
+            id_voltagem: dados[3],
+            id_categoria: dados[4],
+            local: dados[5],
+            n_serie: dados[6],
+            id_situacao: dados[7],
+            observacao: dados[8],
             
         };
 
-        const response = await fetch(API_URL + "teste", {
+        const response = await fetch(API_URL + "itens", {
             method: 'POST',
             headers: {
                 apikey: API_KEY,
@@ -316,8 +349,6 @@ import { API_URL, API_KEY } from "../config.js" ;
         console.log(data);
 
     }
-
-
 
     async function editarItem(id, dados) {
     
@@ -342,7 +373,7 @@ import { API_URL, API_KEY } from "../config.js" ;
       console.log(itemAtualizado);
 
       const response = await fetch(
-        `${API_URL}teste?id=eq.${id}`,
+        `${API_URL}itens?id=eq.${id}`,
         {
           method: 'PATCH',
           headers: {
@@ -361,7 +392,6 @@ import { API_URL, API_KEY } from "../config.js" ;
     
     }
     
-
     async function deletarItem(id) {
     
       const response = await fetch(
@@ -381,3 +411,60 @@ import { API_URL, API_KEY } from "../config.js" ;
     
     }
     
+    btnAction.addEventListener("click",()=>{
+        
+        showModal({
+            
+            title: modalConfig.title,
+            message: modalConfig.message,
+            confirmText: modalConfig.confirmText,
+                                    
+            onConfirm: () => {
+                dadosItem();
+                bloquearBotoes();
+                showToast({
+                    message: modalConfig.toast.message,
+                    type: modalConfig.toast.type,
+                });
+            },
+            onCancel: () =>{
+
+                desbloquearBotoes();
+            }
+        });
+        
+    })
+
+    function bloquearBotoes(){
+
+        [
+        buttonActionPage,
+        buttonActionCancel
+        ].forEach(btn => {
+
+            btn.classList.add(
+                'opacity-50',
+                'pointer-events-none',
+                'cursor-not-allowed'
+            );
+
+        });
+
+    }
+
+    function desbloquearBotoes(){
+
+        [
+        buttonActionPage,
+        buttonActionCancel
+        ].forEach(btn => {
+
+            btn.classList.remove(
+                'opacity-50',
+                'pointer-events-none',
+                'cursor-not-allowed'
+            );
+
+        });
+
+    }

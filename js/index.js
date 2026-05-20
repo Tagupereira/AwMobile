@@ -34,10 +34,26 @@ async function login() {
 
     if (data.length > 0) {
         // LOGIN OK → só redireciona
-        const user = data[0].user;
+       console.log(data);
+        
+        const user = data[0];
 
-        sessionStorage.setItem("user", user);
-        window.location.href = "../dashboard.html";
+        sessionStorage.setItem("user", JSON.stringify(user));
+        if(user.id_tipoAcesso == 1){
+            
+            window.location.href = "../dashboard.html";
+            return
+        }
+        if(user.id_tipoAcesso == 2){
+            window.location.href = "../dashboard.html";
+            //window.location.href = "../view_equipment.html";
+            return
+        }
+        if(user.id_tipoAcesso == 3){
+            window.location.href = "../cadastro.html";
+            return
+        }
+
         
         
     } else {

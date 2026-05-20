@@ -2,6 +2,10 @@ import { API_URL, API_KEY } from "../config.js" ;
 import { showModal } from "./modal.js";
 import { showToast } from "./toast.js";
 
+    const userSession = JSON.parse(sessionStorage.getItem("user"));
+    console.log(userSession);
+    
+
     const btnBack = document.querySelectorAll('.backBtn');
     btnBack.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -15,6 +19,9 @@ import { showToast } from "./toast.js";
     const btnAction = document.getElementById("actionCad");
     const pageName = document.getElementById("namePage");
 
+    if(userSession.id_tipoAcesso == 2){
+        bloquearBotoes()
+    }
     const params = new URLSearchParams(window.location.search);
 
     const id = params.get("id");

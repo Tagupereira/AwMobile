@@ -1,13 +1,18 @@
 import { API_URL, API_KEY } from "../config.js";
 
 
-const userSession = sessionStorage.getItem("user");
+const userSession = JSON.parse(sessionStorage.getItem("user"));
+console.log(userSession.user);
+
+
 //userSession.charAt(0).toUpperCase() -> pega a primeira letra e deixa maiuscula
 //userSession.slice(1).toLowerCase() -> paga o retante e deixa minuscula
-const userFormat = userSession.charAt(0).toUpperCase() + userSession.slice(1).toLowerCase();
+const userFormat = userSession.user.charAt(0).toUpperCase() + userSession.user.slice(1).toLowerCase();
 
 const idSession = document.getElementById("userSession");
-idSession.innerText = userFormat;
+idSession.innerText = userFormat;//adiciona o Nome do usuario no header
+
+
 
 const cadastro = document.getElementById("cadastro");
 cadastro.addEventListener("click", () => {

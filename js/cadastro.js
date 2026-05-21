@@ -4,6 +4,12 @@ import { showToast } from "./toast.js";
 
     const userSession = JSON.parse(sessionStorage.getItem("user"));
     console.log(userSession);
+
+    if(!userSession){
+
+        window.location.href = 'index.html';
+
+    }
     
 
     const btnBack = document.querySelectorAll('.backBtn');

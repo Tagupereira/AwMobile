@@ -1,5 +1,14 @@
 import { API_URL, API_KEY } from "../config.js";
 
+const userSession = JSON.parse(sessionStorage.getItem("user"));
+    console.log(userSession);
+
+    if(!userSession){
+
+        window.location.href = 'index.html';
+
+    }
+
 const btnBack = document.getElementById("back");
 btnBack.addEventListener("click", () => {
     history.go(-1);

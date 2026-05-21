@@ -1,5 +1,18 @@
 import { API_URL, API_KEY } from "../config.js" ;
+import { deslogaUser } from "../js/desloga.js";
+
+const userSession = JSON.parse(sessionStorage.getItem("user"));
+
+if(userSession){
+    console.log("registro");
     
+    if(userSession){
+        deslogaUser(userSession.id);
+    }
+}
+
+sessionStorage.clear();
+
 const dev = document.getElementById("dev");
 
 dev.addEventListener("click",()=>{
@@ -20,7 +33,7 @@ async function login() {
     erro.innerText = "";
 
     try {
-    const res = await fetch(
+        const res = await fetch(
         `${API_URL}acesso?user=eq.${email}&password=eq.${senha}`,
         {
             headers: {
@@ -34,33 +47,49 @@ async function login() {
 
     if (data.length > 0) {
         // LOGIN OK → só redireciona
-       console.log(data);
-        
-        const user = data[0];
+       //console.log(data);
+       const user = data[0];
 
-        sessionStorage.setItem("user", JSON.stringify(user));
-        if(user.id_tipoAcesso == 1){
-            
-            window.location.href = "../dashboard.html";
-            return
-        }
-        if(user.id_tipoAcesso == 2){
-            window.location.href = "../dashboard.html";
-            //window.location.href = "../view_equipment.html";
-            return
-        }
-        if(user.id_tipoAcesso == 3){
-            window.location.href = "../cadastro.html";
-            return
-        }
+       userStatus(user.id)
 
-        
-        
     } else {
         erro.innerText = "Login ou senha inválidos";
     }
 
     } catch (e) {
-    erro.innerText = "Erro ao conectar";
+        erro.innerText = "Erro ao conectar";
     }
+}
+
+async function userStatus(dataId) {
+
+        
+    const status = {
+        status: 1
+    }
+
+    const response = await fetch(
+    `${API_URL}acesso?id=eq.${dataId}`,
+    {
+        method: 'PATCH',
+        headers: {
+        apikey: API_KEY,
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+        Prefer: 'return=representation'
+        },
+        body: JSON.stringify(status)
+    }
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+    const user = data[0];
+    
+    sessionStorage.setItem("user", JSON.stringify(user));
+    window.location.href = "../dashboard.html";
+
+    
+    
 }

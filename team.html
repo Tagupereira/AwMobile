@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>SoundFlow PRO - Team Management</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#a3aac4",
+            "inverse-primary": "#0053dc",
+            "surface-container": "#0f1930",
+            "secondary-dim": "#58e7ab",
+            "on-primary-container": "#001e5a",
+            "on-tertiary-fixed-variant": "#79000e",
+            "tertiary-fixed-dim": "#ff7b74",
+            "outline-variant": "#40485d",
+            "error-container": "#9f0519",
+            "on-background": "#dee5ff",
+            "on-secondary": "#005a3c",
+            "secondary-fixed-dim": "#58e7ab",
+            "inverse-on-surface": "#4d556b",
+            "error": "#ff716c",
+            "background": "#060e20",
+            "secondary": "#69f6b8",
+            "tertiary-dim": "#ff716a",
+            "primary-fixed-dim": "#658eff",
+            "on-primary": "#002873",
+            "tertiary-container": "#fd4e4d",
+            "tertiary-fixed": "#ff928b",
+            "on-tertiary-fixed": "#3a0003",
+            "on-tertiary-container": "#1f0001",
+            "surface-container-highest": "#192540",
+            "surface-dim": "#060e20",
+            "on-tertiary": "#490005",
+            "on-secondary-fixed-variant": "#006544",
+            "secondary-fixed": "#69f6b8",
+            "outline": "#6d758c",
+            "on-primary-fixed-variant": "#00266e",
+            "surface-container-high": "#141f38",
+            "primary-fixed": "#7b9cff",
+            "on-error-container": "#ffa8a3",
+            "on-primary-fixed": "#000000",
+            "surface": "#060e20",
+            "surface-container-low": "#091328",
+            "surface-bright": "#1f2b49",
+            "surface-container-lowest": "#000000",
+            "primary-dim": "#316bf3",
+            "on-secondary-fixed": "#00452d",
+            "primary-container": "#7b9cff",
+            "surface-tint": "#90abff",
+            "error-dim": "#d7383b",
+            "on-error": "#490006",
+            "tertiary": "#ff716a",
+            "on-secondary-container": "#e1ffec",
+            "on-surface": "#dee5ff",
+            "inverse-surface": "#faf8ff",
+            "secondary-container": "#006c49",
+            "surface-variant": "#192540",
+            "primary": "#90abff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": [
+              "Manrope"
+            ],
+            "body": [
+              "Inter"
+            ],
+            "label": [
+              "Inter"
+            ]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    body {
+      background-color: #060e20;
+    }
+  </style>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+
+<body class="font-body text-on-surface antialiased">
+  <!-- TopAppBar -->
+  <header class="bg-[#060e20] w-full top-0 sticky z-50 flex justify-between items-center px-6 py-4 w-full">
+      <div class="flex items-center gap-3">
+
+          <span class="backBtn material-symbols-outlined text-[#90abff] active:scale-95 duration-200 cursor-pointer"
+              >arrow_back</span>
+
+          <h1 id="namePage" class="font-['Manrope'] font-bold tracking-tight text-1xl text-[#dee5ff]"></h1>
+      </div>
+     
+  </header>
+
+  <main id="teamList" class=" teamList pt-5 pb-32 px-6 max-w-5xl mx-auto">
+    <!-- Team List Hierarchy -->
+     
+  </main>
+  
+  <!-- BottomNavBar -->
+  <nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#0f1930]/70 backdrop-blur-xl rounded-t-2xl shadow-[0_-8px_32px_rgba(49,107,243,0.15)] border-t border-[#40485d]/15 z-50">
+    
+    <div class="flex flex-col items-center justify-center text-[#a3aac4] hover:text-[#dee5ff] transition-all active:scale-90 duration-150">
+      <span class="material-symbols-outlined">inventory_2</span>
+      <span class="font-['Inter'] text-[10px] uppercase tracking-widest font-semibold mt-1">Inventory</span>
+    </div>
+   
+    <!-- Active Tab: Team -->
+    <div class="flex flex-col items-center justify-center bg-[#316bf3]/20 text-[#90abff] rounded-xl px-4 py-1 active:scale-90 duration-150">
+      <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+      <span class="font-['Inter'] text-[10px] uppercase tracking-widest font-semibold mt-1">Novo</span>
+    </div>
+
+    <div class="flex flex-col items-center justify-center text-[#a3aac4] hover:text-[#dee5ff] transition-all active:scale-90 duration-150">
+      <span class="material-symbols-outlined">settings</span>
+      <span class="font-['Inter'] text-[10px] uppercase tracking-widest font-semibold mt-1">Settings</span>
+    </div>
+
+  </nav>
+  <script type="module" src="js/team.js"></script>
+</body>
+
+</html>

@@ -8,6 +8,7 @@ if(userSession){
     
     if(userSession){
         deslogaUser(userSession.id);
+        criarLog(userSession, "Deslogou")
     }
 }
 
@@ -86,10 +87,42 @@ async function userStatus(dataId) {
 
     console.log(data);
     const user = data[0];
-    
+    const acao = "Entrou"
+    criarLog(user, acao);
+
     sessionStorage.setItem("user", JSON.stringify(user));
     window.location.href = "../dashboard.html";
-
+    
     
     
 }
+
+
+////////////////////////////////////////////////////////////////////////
+
+    async function criarLog(dados, acao) {
+            
+        const novoLog= {
+            idUser: dados.id,
+            userName: dados.user,
+            acao: acao,
+        };
+
+        const response = await fetch(API_URL + "logs", {
+            method: 'POST',
+            headers: {
+                apikey: API_KEY,
+                Authorization: `Bearer ${API_KEY}`,
+                'Content-Type': 'application/json',
+                Prefer: 'return=representation'
+            },
+            body: JSON.stringify(novoLog)
+        });
+
+        const data = await response.json();
+
+        console.log(data);
+
+    }
+
+///////////////////////////////////////////////////////////////////////

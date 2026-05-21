@@ -106,66 +106,6 @@ import { showToast } from "./toast.js";
         }
     }
 
-    // async function cadastrarItem(){
-
-    //     ///////////////// categorias
-    //     const categorias = await fetch(
-    //       `${API_URL_CATEGORIAS}?select=*`,
-    //       {
-    //         headers: {
-    //           apikey: API_KEY,
-    //           Authorization: `Bearer ${API_KEY}`
-    //         }
-    //       }
-    //     );
-
-    //     const catItens = await categorias.json();
-
-    //     //////////////// tipos
-    //     const tipos = await fetch(
-    //       `${API_URL_TIPOS}?select=*`,
-    //       {
-    //         headers: {
-    //           apikey: API_KEY,
-    //           Authorization: `Bearer ${API_KEY}`
-    //         }
-    //       }
-    //     );
-
-    //     const tipoItens = await tipos.json();
-
-    //     //////////////// voltagens
-    //     const voltagens = await fetch(
-    //       `${API_URL_VOLTAGEM}?select=*`,
-    //       {
-    //         headers: {
-    //           apikey: API_KEY,
-    //           Authorization: `Bearer ${API_KEY}`
-    //         }
-    //       }
-    //     );
-
-    //     const voltItens = await voltagens.json();
-    //      //////////////// situacao
-    //     const situacoes = await fetch(
-    //       `${API_URL_SITUACAO}?select=*`,
-    //       {
-    //         headers: {
-    //           apikey: API_KEY,
-    //           Authorization: `Bearer ${API_KEY}`
-    //         }
-    //       }
-    //     );
-    //     const sitItens = await situacoes.json();
-
-
-    //     console.log(catItens);
-    //     console.log(tipoItens);
-    //     console.log(voltItens);
-    //     console.log(sitItens);
-
-    // }
-
     function erroTela() {
         alert("erro")
     }

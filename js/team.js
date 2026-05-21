@@ -1,5 +1,10 @@
 import { API_URL, API_KEY } from "../config.js";
 
+const btnBack = document.getElementById("back");
+
+btnBack.addEventListener("click", () => {
+    history.go(-1)
+});
 
 const userSession = JSON.parse(sessionStorage.getItem("user"));
     console.log(userSession);

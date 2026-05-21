@@ -1,11 +1,10 @@
 import { API_URL, API_KEY } from "../config.js" ;
 import { deslogaUser } from "../js/desloga.js";
+import { criarLog } from "../js/log.js";
 
 const userSession = JSON.parse(sessionStorage.getItem("user"));
 
-if(userSession){
-    console.log("registro");
-    
+if(userSession){    
     if(userSession){
         deslogaUser(userSession.id);
         criarLog(userSession, "Deslogou")
@@ -100,29 +99,5 @@ async function userStatus(dataId) {
 
 ////////////////////////////////////////////////////////////////////////
 
-    async function criarLog(dados, acao) {
-            
-        const novoLog= {
-            idUser: dados.id,
-            userName: dados.user,
-            acao: acao,
-        };
-
-        const response = await fetch(API_URL + "logs", {
-            method: 'POST',
-            headers: {
-                apikey: API_KEY,
-                Authorization: `Bearer ${API_KEY}`,
-                'Content-Type': 'application/json',
-                Prefer: 'return=representation'
-            },
-            body: JSON.stringify(novoLog)
-        });
-
-        const data = await response.json();
-
-        console.log(data);
-
-    }
-
+   
 ///////////////////////////////////////////////////////////////////////

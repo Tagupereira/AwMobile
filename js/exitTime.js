@@ -1,4 +1,9 @@
+import { deslogaUser } from "../js/desloga.js";
+import { criarLog } from "../js/log.js";
+
 let timeoutInatividade;
+
+const userSession = JSON.parse(sessionStorage.getItem("user"));
 
 export function resetarTimer(){
 
@@ -31,8 +36,15 @@ export function resetarTimer(){
 
 function logout(){
 
-    window.location.href =
-      'index.html';
+  const acao = "Deslogado";
+  const obs = "usuario inativo"
+  
+  deslogaUser(userSession.id)
+  criarLog(userSession, acao, obs);
+  
+  window.location.href = 'index.html';
+  sessionStorage.clear();
+
 
 }
 

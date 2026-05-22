@@ -31,8 +31,6 @@ export function resetarTimer(){
 
 function logout(){
 
-    sessionStorage.clear();
-
     window.location.href =
       'index.html';
 

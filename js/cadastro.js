@@ -2,6 +2,7 @@ import { API_URL, API_KEY } from "../config.js";
 import { showModal } from "./modal.js";
 import { showToast } from "./toast.js";
 import { criarLog } from "../js/log.js";
+import { resetarTimer } from "../js/exitTime.js";
 
 const userSession = JSON.parse(sessionStorage.getItem("user"));
 console.log(userSession);

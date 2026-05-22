@@ -1,4 +1,5 @@
 import { API_URL, API_KEY } from "../config.js";
+import { resetarTimer } from "../js/exitTime.js";
 
 const userSession = JSON.parse(sessionStorage.getItem("user"));
     console.log(userSession);

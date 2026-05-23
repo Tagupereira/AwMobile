@@ -39,8 +39,8 @@ function logout(){
   const acao = "Deslogado";
   const obs = "usuario inativo"
   
-  deslogaUser(userSession.id)
-  criarLog(userSession, acao, obs);
+  await deslogaUser(userSession.id)
+  await criarLog(userSession, acao, obs);
 
 }
 

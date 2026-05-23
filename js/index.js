@@ -6,8 +6,8 @@ const userSession = JSON.parse(sessionStorage.getItem("user"));
 
 if(userSession){    
     if(userSession){
-        deslogaUser(userSession.id);
-        criarLog(userSession, "Deslogou")
+        await deslogaUser(userSession.id);
+        await criarLog(userSession, "Deslogou")
     }
 }
 

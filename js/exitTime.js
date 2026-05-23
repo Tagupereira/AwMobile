@@ -34,12 +34,12 @@ export function resetarTimer(){
 
 });
 
-function logout(){
+async function logout(){
 
   const acao = "Deslogado";
   const obs = "usuario inativo"
   
-  await deslogaUser(userSession.id)
+  await deslogaUser(userSession.id);
   await criarLog(userSession, acao, obs);
 
 }

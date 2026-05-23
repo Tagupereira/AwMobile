@@ -41,6 +41,8 @@ async function logout(){
   
   await deslogaUser(userSession.id);
   await criarLog(userSession, acao, obs);
+  window.location.href = 'index.html';
+  sessionStorage.clear();
 
 }
 

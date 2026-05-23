@@ -1,14 +1,15 @@
 import { API_URL, API_KEY } from "../config.js" ;
 import { deslogaUser } from "../js/desloga.js";
 import { criarLog } from "../js/log.js";
+import { showToast } from "../js/toast.js";
 
 const userSession = JSON.parse(sessionStorage.getItem("user"));
 
 if(userSession){    
-    if(userSession){
-        await deslogaUser(userSession.id);
-        await criarLog(userSession, "Deslogou")
-    }
+    await deslogaUser(userSession.id);
+    await criarLog(userSession, "Deslogou")
+    console.log("tem session");
+    showToast("Deslogando","warning")
 }
 
 sessionStorage.clear();

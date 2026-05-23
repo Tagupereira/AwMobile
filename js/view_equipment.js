@@ -77,7 +77,7 @@ function renderizar(lista) {
         const statusCor = coresStatus[item.situacao.situacao] || "";
 
         html += `
-          <div data-id="${item.id}" class="bg-surface-container p-4 rounded-xl shadow-lg border border-outline-variant/10 item">
+          <div data-id="${item.id}" class="bg-[#0f1219] p-4 rounded-xl shadow-lg border border-outline-variant/10 item">
             <div class="flex gap-4">
 
               <div class="flex-1 flex flex-col justify-between">

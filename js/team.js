@@ -67,7 +67,7 @@ function renderizar(lista) {
         return;
     }
 
-    let html = '<h2 class="font-headline font-bold text-lg text-[#90abff] mb-6 px-2">Access Control List</h2>';
+    let html = '<h2 class="font-headline font-bold text-lg text-on-surface mb-6 px-2">Access Control List</h2>';
     const userImg = "https://img.magnific.com/psd-gratuitas/ilustracao-de-icone-de-contacto-isolada_23-2151903337.jpg?semt=ais_hybrid&w=740&q=80"
     
     lista.forEach(user => {
@@ -79,7 +79,7 @@ function renderizar(lista) {
             <div class="space-y-4">
               
               <!-- Team Member Card: Admin -->
-              <div class="group bg-surface-container hover:bg-surface-container-high transition-all duration-300 rounded-xl p-4 mb-7 flex items-center justify-between">
+              <div class="group bg-[#0f1219] hover:bg-surface-container-high transition-all duration-300 rounded-xl p-4 mb-7 flex items-center justify-between">
                 <div class="flex items-center gap-4">
                   <div class="relative">
                     <img class="w-14 h-14 rounded-xl object-cover"

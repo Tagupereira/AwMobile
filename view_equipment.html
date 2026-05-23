@@ -5,6 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+   <meta name="theme-color" content="#060e20" >
   <meta name="description" content="TD desenvolvimento digital" />
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -97,7 +98,7 @@
     }
 
     body {
-      background-color: #060e20;
+      background-color: #0b0c10;
       color: #dee5ff;
       font-family: 'Inter', sans-serif;
     }
@@ -116,11 +117,11 @@
 
 <body class="flex flex-col min-h-screen">
   <!-- TopAppBar -->
-  <header class="bg-[#060e20] w-full top-0 sticky z-50 flex justify-between items-center px-6 py-4 w-full">
+  <header class="bg-[#0f1219] w-full top-0 sticky z-50 flex justify-between items-center px-6 py-4 w-full">
     <div class="flex items-center gap-3">
 
       <span id="back"
-        class="material-symbols-outlined text-[#90abff] active:scale-95 duration-200 cursor-pointer">arrow_back</span>
+        class="material-symbols-outlined text-[#dee5ff] active:scale-95 duration-200 cursor-pointer">arrow_back</span>
 
       <h1 class="font-['Manrope'] font-bold tracking-tight text-1xl text-[#dee5ff]">Equipamentos</h1>
     </div>
@@ -135,36 +136,36 @@
         <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg"
           data-icon="search">search</span>
         <input id="search-input"
-          class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary/20 transition-all font-body"
+          class="w-full bg-[#0f1219] border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary/20 transition-all font-body"
           placeholder="Buscar equipamentos..." type="text" />
       </div>
       <div class="flex gap-3 mt-4 overflow-x-auto pb-2 scrollbar-hidden">
         <button data-filtro=""
-          class="buscaCategoria bg-primary/10 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2 whitespace-nowrap">
+          class="buscaCategoria bg-[#0f1219] text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2 whitespace-nowrap">
           <span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span> All Stock
         </button>
         <button data-filtro="funcionando"
-          class="buscaCategoria bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          class="buscaCategoria bg-[#0f1219] text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
           Funcionando
         </button>
         <button data-filtro="defeito"
-          class="buscaCategoria bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          class="buscaCategoria bg-[#0f1219] text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
           Defeito
         </button>
         <button data-filtro="manutencao"
-          class="buscaCategoria bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          class="buscaCategoria bg-[#0f1219] text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
           Manutencão
         </button>
         <button data-filtro="evento"
-          class="buscaCategoria bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          class="buscaCategoria bg-[#0f1219] text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
           Em Evento
         </button>
         <button data-filtro="locado"
-          class="buscaCategoria bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          class="buscaCategoria bg-[#0f1219] text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
           Locado
         </button>
         <button data-filtro="analise"
-          class="buscaCategoria bg-surface-container text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
+          class="buscaCategoria bg-[#0f1219] text-on-surface-variant px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap hover:bg-surface-container-high transition-colors">
           Análise
         </button>
       </div>

@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="TD desenvolvimento digital"/>
+    <meta name="description" content="TD desenvolvimento digital" />
+    <meta name="theme-color" content="#060e20" >
 
     <title>SoundFlow PRO - Add Equipment</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -117,9 +118,9 @@
     </style>
 </head>
 
-<body class="bg-background text-on-surface font-body min-h-screen pb-10">
+<body class="bg-[#0b0c10] text-on-surface font-body min-h-screen pb-10">
     <!-- Top Bar Component -->
-    <header class="bg-[#060e20] w-full top-0 sticky z-50 flex justify-between items-center px-6 py-4 w-full">
+    <header class="bg-[#0f1219] w-full top-0 sticky z-50 flex justify-between items-center px-6 py-4 w-full">
         <div class="flex items-center gap-3">
 
             <span class="backBtn material-symbols-outlined text-[#90abff] active:scale-95 duration-200 cursor-pointer"
@@ -162,7 +163,7 @@
                     </label>
                     <input id="item-cod"
                         class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/50 transition-all"
-                        placeholder="000000" type="text" maxlength="6"/>
+                        placeholder="000000" type="text" maxlength="6" required/>
                 </div>
             </div>
             <!-- Equipment Name -->
@@ -174,7 +175,7 @@
                 </label>
                 <input id="item-nome"
                     class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="e.g., Shure SM58" type="text" />
+                    placeholder="e.g., Shure SM58" type="text" required/>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Brand -->
@@ -225,7 +226,7 @@
                 </label>
                 <input id="item-local"
                     class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="e.g., Shure" type="text" />
+                    placeholder="e.g., Shure" type="text" required/>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -238,7 +239,7 @@
                     </label>
                     <input id="item-serial"
                         class="w-full bg-surface-container border-none rounded-xl py-4 px-5 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/50 transition-all"
-                        placeholder="SN-8293-XXXX" type="text" />
+                        placeholder="SN-8293-XXXX" type="text" required/>
                 </div>
                 <!-- Purchase Date -->
                 <div class="space-y-2">
@@ -294,7 +295,7 @@
         <!-- Action Buttons -->
         <section class="pt-8 space-y-4">
             <button id="btn-action"
-                class="w-full py-5 rounded-full bg-gradient-to-tr from-[#7b9cff] to-[#316bf3] text-white font-headline font-extrabold text-lg shadow-[0_0_24px_rgba(49,107,243,0.3)] hover:shadow-[0_0_32px_rgba(49,107,243,0.5)] active:scale-95 transition-all flex items-center justify-center gap-3">
+                class="w-full py-5 rounded-full bg-[#316bf3] text-white font-headline font-extrabold text-lg active:scale-95 transition-all flex items-center justify-center gap-3">
                 <span class="material-symbols-outlined" data-icon="save">save</span>
                 <span id="actionCad">Salvar</span>
             </button>

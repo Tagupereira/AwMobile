@@ -24,4 +24,6 @@ import { API_URL, API_KEY } from "../config.js";
 
         console.log(data);
 
+        window.location.href = 'index.html';
+        sessionStorage.clear();
     }

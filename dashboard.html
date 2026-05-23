@@ -5,7 +5,8 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta name="description" content="TD desenvolvimento digital"/>
+  <meta name="description" content="TD desenvolvimento digital" />
+  <meta name="theme-color" content="#060e20" >
   
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -95,7 +96,7 @@
   </script>
   <style>
     body {
-      background-color: #060e20;
+      background-color: #0b0c10;
       font-family: 'Inter', sans-serif;
     }
 
@@ -109,19 +110,23 @@
     }
 
     .milled-card {
-      background: #0f1930;
+      background: #0f1219;
+      border: 2px solid #212934;
     }
 
     .tonal-surface {
-      background: #091328;
+      background: #0f1219;
     }
 
     .high-signal-gradient-blue {
-      background: linear-gradient(135deg, #7b9cff 0%, #316bf3 100%);
+      background: #316bf3;
+    }
+    .high-signal-blue {
+      background: #2cb3d8;;
     }
 
     .high-signal-gradient-green {
-      background: linear-gradient(135deg, #69f6b8 0%, #006c49 100%);
+      background: #69f6b8;
     }
   </style>
   <style>
@@ -133,8 +138,8 @@
 
 <body class="text-on-surface antialiased min-h-screen pb-32">
   <!-- TopAppBar -->
-  <header class="w-full top-0 sticky bg-[#060e20] z-[60]">
-    <div class="flex justify-between items-center px-6 py-4 w-full bg-[#091328]">
+  <header class="w-full top-0 sticky bg-[#0f1219] z-[60]">
+    <div class="flex justify-between items-center px-6 py-4 w-full bg-[#0f1219]">
       <div class="flex items-center gap-3">
         <div
           class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/20">
@@ -150,7 +155,7 @@
       </button>
     </div>
   </header>
-  <main class="px-6 pt-6 space-y-8">
+  <main class="px-6 pt-6 space-y-8 bg-[#0b0c10]">
     <!-- Metrics Bento Grid -->
     <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <!-- Total Equipment -->
@@ -230,7 +235,7 @@
         <!-- Event Card 1 -->
         <div class="tonal-surface p-4 rounded-xl flex items-center gap-4">
           <div
-            class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
+            class="w-14 h-14 rounded-lg bg-[#212934] flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
             <span class="text-[10px] font-bold uppercase text-on-surface-variant">Oct</span>
             <span class="text-lg font-headline font-black text-primary">24</span>
           </div>
@@ -251,7 +256,7 @@
         <!-- Event Card 2 -->
         <div class="tonal-surface p-4 rounded-xl flex items-center gap-4">
           <div
-            class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
+            class="w-14 h-14 rounded-lg bg-[#212934] flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
             <span class="text-[10px] font-bold uppercase text-on-surface-variant">Oct</span>
             <span class="text-lg font-headline font-black text-primary">28</span>
           </div>
@@ -272,7 +277,7 @@
         <!-- Event Card 3 -->
         <div class="tonal-surface p-4 rounded-xl flex items-center gap-4 opacity-70">
           <div
-            class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
+            class="w-14 h-14 rounded-lg bg-[#212934] flex flex-col items-center justify-center shrink-0 border border-outline-variant/10">
             <span class="text-[10px] font-bold uppercase text-on-surface-variant">Nov</span>
             <span class="text-lg font-headline font-black text-primary">02</span>
           </div>
@@ -289,8 +294,8 @@
   </main>
   <!-- BottomNavBar -->
   <nav
-    class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-6 px-4 bg-[#060e20]/70 backdrop-blur-xl shadow-[0_-12px_32px_-4px_rgba(222,229,255,0.08)] rounded-t-3xl">
-    <div class="flex flex-col items-center justify-center text-[#90abff] bg-[#316bf3]/10 rounded-xl p-2">
+    class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-6 px-4 bg-[#0b0c10]/70 backdrop-blur-xl shadow-[0_-12px_32px_-4px_rgba(222,229,255,0.08)] rounded-t-3xl">
+    <div class="flex flex-col items-center justify-center text-[#a3aac4]  rounded-xl p-2">
       <span class="material-symbols-outlined" data-icon="home">home</span>
       <span class="font-inter text-[10px] font-bold uppercase tracking-widest">Home</span>
     </div>
@@ -300,7 +305,7 @@
     </div>
     <div class="flex flex-col items-center justify-center">
       <button id="cadastro"
-        class="w-14 h-14 rounded-full high-signal-gradient-blue shadow-[0_8px_24px_rgba(49,107,243,0.4)] flex items-center justify-center -translate-y-4 border-4 border-background">
+        class="w-14 h-14 rounded-full high-signal-blue shadow-[0_8px_24px_rgba(49,107,243,0.4)] flex items-center justify-center -translate-y-4 border-4 border-background">
         <span class="material-symbols-outlined text-white text-3xl" data-icon="add"
           style="font-variation-settings: 'FILL' 0, 'wght' 700;">add</span>
       </button>

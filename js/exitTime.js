@@ -13,7 +13,7 @@ export function resetarTimer(){
 
         logout();
 
-    }, 1000 * 60 * 15);
+    }, 1000 * 60 * 1);
 
     // 15 minutos
 
@@ -41,10 +41,6 @@ function logout(){
   
   deslogaUser(userSession.id)
   criarLog(userSession, acao, obs);
-  
-  window.location.href = 'index.html';
-  sessionStorage.clear();
-
 
 }
 

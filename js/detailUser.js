@@ -1,5 +1,5 @@
 import { API_URL, API_KEY } from "../config.js";
-//import { resetarTimer } from "../js/exitTime.js";
+import { resetarTimer } from "../js/exitTime.js";
 
 const btnBack = document.getElementById("back"); 
 btnBack.addEventListener("click", () => {

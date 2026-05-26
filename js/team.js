@@ -1,5 +1,5 @@
 import { API_URL, API_KEY } from "../config.js";
-//import { resetarTimer } from "../js/exitTime.js";
+import { resetarTimer } from "../js/exitTime.js";
 
 const btnBack = document.getElementById("back");
  
@@ -82,7 +82,7 @@ function renderizar(lista) {
             <div class="space-y-4">
               
               <!-- Team Member Card: Admin -->
-              <div class="group bg-[#0f1219] hover:bg-surface-container-high transition-all duration-300 rounded-xl p-4 mb-7 flex items-center justify-between">
+              <div id="${user.id}" class="detailUser group bg-[#0f1219] hover:bg-surface-container-high transition-all duration-300 rounded-xl p-4 mb-7 flex items-center justify-between">
                 <div class="flex items-center gap-4">
                   <div class="relative">
                     <img class="w-14 h-14 rounded-xl object-cover"
@@ -100,8 +100,8 @@ function renderizar(lista) {
                 <div class="flex items-center gap-6">
                   <span
                     class="hidden md:block bg-primary-dim/10 text-primary-fixed-dim text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-primary-dim/20">Admin</span>
-                  <button id="${user.id}"
-                    class="detailUser p-2 rounded-lg bg-surface-variant text-on-surface-variant hover:text-primary transition-colors active:scale-90">
+                  <button 
+                    class=" p-2 rounded-lg bg-surface-variant text-on-surface-variant hover:text-primary transition-colors active:scale-90">
                     <span class="material-symbols-outlined">edit</span>
                   </button>
                 </div>

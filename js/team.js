@@ -1,8 +1,8 @@
 import { API_URL, API_KEY } from "../config.js";
-import { resetarTimer } from "../js/exitTime.js";
+//import { resetarTimer } from "../js/exitTime.js";
 
 const btnBack = document.getElementById("back");
-
+ 
 btnBack.addEventListener("click", () => {
     history.go(-1)
 });
@@ -45,9 +45,12 @@ async function carregarTeam() {
 
         listaUser = await response.json();
 
-        console.log('Usuarios carregados:', listaUser);
-
-        renderizar(listaUser);
+        const listaSafe = listaUser.map(user =>{
+            const { password, ...userSafe } = user;
+            return userSafe
+        })
+               
+        renderizar(listaSafe);
 
     } catch (erro) {
         console.error(erro);
@@ -97,8 +100,8 @@ function renderizar(lista) {
                 <div class="flex items-center gap-6">
                   <span
                     class="hidden md:block bg-primary-dim/10 text-primary-fixed-dim text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-primary-dim/20">Admin</span>
-                  <button
-                    class="p-2 rounded-lg bg-surface-variant text-on-surface-variant hover:text-primary transition-colors active:scale-90">
+                  <button id="${user.id}"
+                    class="detailUser p-2 rounded-lg bg-surface-variant text-on-surface-variant hover:text-primary transition-colors active:scale-90">
                     <span class="material-symbols-outlined">edit</span>
                   </button>
                 </div>
@@ -109,6 +112,19 @@ function renderizar(lista) {
 
     container.innerHTML = html;
 
+    const detailBtn = document.querySelectorAll('.detailUser');
+ 
+    detailBtn.forEach(btn => {
+
+        const userId = JSON.stringify(lista.filter(user => user.id == btn.id));
+
+        btn.addEventListener("click", () => {
+
+            localStorage.setItem("userView", userId);
+            window.location.href = `../view_user.html`;         
+            
+        });
+    });
 }
 
 carregarTeam();

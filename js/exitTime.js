@@ -13,7 +13,7 @@ export function resetarTimer(){
 
         logout();
 
-    }, 1000 * 60 * 1);
+    }, 1000 * 60 * 15);
 
     // 15 minutos
 

@@ -63,7 +63,6 @@ async function login() {
 }
 
 async function userStatus(dataId) {
-
         
     const status = {
         status: 1
@@ -87,18 +86,57 @@ async function userStatus(dataId) {
 
     console.log(data);
     const user = data[0];
-    const acao = "Entrou"
-    criarLog(user, acao);
+    const acao = "Entrou";
+    const obs = `${getDevice()} - ${getBrowser()}`;
+    criarLog(user, acao, obs);
 
-    sessionStorage.setItem("user", JSON.stringify(user));
+    const { password, ...userSafe } = data[0];
+
+    sessionStorage.setItem("user", JSON.stringify(userSafe));
     window.location.href = "../dashboard.html";
-    
-    
     
 }
 
-
 ////////////////////////////////////////////////////////////////////////
 
-   
+function getDevice(){
+
+   const ua =
+   navigator.userAgent;
+
+   if(/iPhone/i.test(ua))
+      return "iPhone";
+
+   if(/iPad/i.test(ua))
+      return "iPad";
+
+   if(/Android/i.test(ua))
+      return "Android";
+
+   return "Desktop";
+
+}
+
+function getBrowser(){
+
+   const ua =
+   navigator.userAgent;
+
+   if(ua.includes("Chrome"))
+      return "Chrome";
+
+   if(ua.includes("Firefox"))
+      return "Firefox";
+
+   if(ua.includes("Safari"))
+      return "Safari";
+
+   return "Outro";
+
+}
+
+getDevice()
+getBrowser()
+
+
 ///////////////////////////////////////////////////////////////////////

@@ -5,9 +5,7 @@ const userSession = JSON.parse(sessionStorage.getItem("user"));
     console.log(userSession);
 
     if(!userSession){
-
         window.location.href = 'index.html';
-
     }
 
 const btnBack = document.getElementById("back");
@@ -18,8 +16,8 @@ btnBack.addEventListener("click", () => {
 })
 
 // 🔥 pega ID da URL
-const params = new URLSearchParams(window.location.search);
-const id = params.get('id');
+// const params = new URLSearchParams(window.location.search);
+// const id = params.get('id');
 
 // 🔥 pega localStorage
 let itemLS = null;
@@ -30,16 +28,13 @@ try {
     itemLS = null;
 }
 
-console.log('ID URL:', id);
-console.log('Cache:', itemLS);
-
 // 🚀 INICIAR
-if (itemLS && (!id || itemLS.id == id)) {
-    console.log('✔ carregado do cache');
-    preencherTela(itemLS);
-} else if (id) {
-    console.log('🌐 buscando do servidor');
-    buscarDoServidor(id);
+if (itemLS) {
+    console.log('🌐 buscando do servidor');   
+    console.log(itemLS);
+    
+    buscarDoServidor(itemLS.id);
+
 } else {
     erroTela();
 }
@@ -53,10 +48,10 @@ editItem.addEventListener("click", () => {
 })
 
 // 🔥 BUSCAR DO SUPABASE
-async function buscarDoServidor(id) {
+async function buscarDoServidor(id) {    
     try {
         const response = await fetch(
-            `${API_URL_ITENS}?id=eq.${id}`,
+            `${API_URL}itens?id=eq.${id}&select=*,categoria(categoria,img),tipos(tipo),voltagens(voltagem),situacao(situacao)&order=id.asc`,
             {
                 headers: {
                     apikey: API_KEY,
@@ -68,11 +63,10 @@ async function buscarDoServidor(id) {
         const data = await response.json();
 
         if (!data.length) return erroTela();
-
+                
         const item = data[0];
-
         preencherTela(item);
-
+         
     } catch (e) {
         console.error(e);
         erroTela();
@@ -81,7 +75,8 @@ async function buscarDoServidor(id) {
 
 // 🎯 PREENCHER TELA
 function preencherTela(item) {
-
+    console.log(item);
+    
     document.getElementById('item-nome').innerText = `${item.item}` || 'Sem nome';
     document.getElementById('item-info').innerText = `${item.local || '-'}`;
     document.getElementById('item-serie').innerText = `• SN: ${item.n_serie || '-'}`;

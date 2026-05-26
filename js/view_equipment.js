@@ -5,9 +5,7 @@ const userSession = JSON.parse(sessionStorage.getItem("user"));
     console.log(userSession);
 
     if(!userSession){
-
         window.location.href = 'index.html';
-
     }
 
 let todosItens = [];
@@ -20,7 +18,6 @@ btnBack.addEventListener("click", () => {
 
 // 🔥 CARREGAR UMA VEZ
 async function carregarItens() {
-
 
     const container = document.getElementById('equipment-list');
 
@@ -60,7 +57,6 @@ const coresStatus = {
 };
 // 🎯 RENDER
 function renderizar(lista) {
-
 
     const container = document.getElementById('equipment-list');
 
@@ -130,7 +126,6 @@ document.getElementById('equipment-list').addEventListener('click', (e) => {
     // salva o objeto (rápido)
     localStorage.setItem('itemSelecionado', JSON.stringify(item));
 
-    // 👉 passa o ID na URL
     window.location.href = `../details_equipment.html`;
 
 });
@@ -205,11 +200,17 @@ btnTopo.addEventListener('click', () => {
     });
 });
 
-// 🚀 START
-carregarItens();
 
-window.addEventListener('pageshow', () => {
+
+window.addEventListener('pageshow', (event) => {
 
     document.getElementById('search-input').value = '';
 
+    if(event.persisted){
+
+        carregarItens();
+
+    }
 });
+// 🚀 START
+carregarItens();

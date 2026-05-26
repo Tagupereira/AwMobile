@@ -83,7 +83,7 @@ async function buscarDoServidor(id) {
 
     try {
         const response = await fetch(
-            `${API_URL}itens?id=eq.${id}&select=*,categoria(categoria),tipos(tipo),voltagens(voltagem),situacao(situacao)&order=id.asc`,
+            `${API_URL}itens?id=eq.${id}&select=*,categoria(categoria,img),tipos(tipo),voltagens(voltagem),situacao(situacao)&order=id.asc`,
             {
                 headers: {
                     apikey: API_KEY,
@@ -327,10 +327,7 @@ async function editarItem(id, dados) {
         n_serie: dados[6],
         id_situacao: dados[7],
         observacao: dados[8],
-
     };
-
-    console.log(itemAtualizado);
 
     const response = await fetch(
         `${API_URL}itens?id=eq.${id}`,
@@ -347,14 +344,31 @@ async function editarItem(id, dados) {
     );
 
     const data = await response.json();
-    console.log(data);
-
+    
     const patrimonio = String(itemAtualizado.patrimonio).padStart(6, '0')
     const acao = "Editou"
     const obs = `#${patrimonio} - ${itemAtualizado.item}`;
+    
+    atualizaItem(id);
+    criarLog(userSession, acao, obs);
 
-    criarLog(userSession, acao, obs)
+}
 
+async function atualizaItem(id){
+    const response = await fetch(
+            `${API_URL}itens?id=eq.${id}&select=*,categoria(categoria,img),tipos(tipo),voltagens(voltagem),situacao(situacao)&order=id.asc`,
+            {
+                headers: {
+                    apikey: API_KEY,
+                    Authorization: `Bearer ${API_KEY}`
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (!data.length) return erroTela();
+        localStorage.setItem('itemSelecionado', JSON.stringify(data[0]));
 }
 
 async function deletarItem(id) {

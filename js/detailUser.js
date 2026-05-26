@@ -113,6 +113,7 @@ async function logView(listaLogs){
         const tipos = {
             Entrou: "login",
             Deslogou: "logout",
+            Deslogado: "timer",
             Editou: "edit_note",
             Cadastrou: "add_ad",
             Excluiu: "delete",
@@ -121,6 +122,7 @@ async function logView(listaLogs){
         const cores = {
             Entrou: "secondary",
             Deslogou: "primary",
+            Deslogado: "primary",
             Editou: "yellow-400",
             Cadastrou: "primary",
             Excluiu: "error",

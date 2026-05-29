@@ -13,11 +13,10 @@ if (!userSession) {
     
 }
 
-
 const btnBack = document.querySelectorAll('.backBtn');
 btnBack.forEach(btn => {
     btn.addEventListener("click", () => {
-        history.go(-1);
+        navegar("back");
     });
 });
 
@@ -234,6 +233,8 @@ async function buscarSituacao(situacao) {
 
 function preencherTela(item) {
 
+    const imgItem = document.getElementById('imgItem')
+    imgItem.classList.add(`bg-[url(${item.categoria.img})]`)
     document.getElementById('item-nome').value = `${item.item}` || 'Sem nome';
     document.getElementById('item-local').value = `${item.local.toUpperCase() || '-'}`;
     document.getElementById('item-serial').value = `${item.n_serie || '-'}`;

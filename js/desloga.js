@@ -1,4 +1,5 @@
 import { API_URL, API_KEY } from "../config.js" ;
+import { showToast } from "../js/toast.js";
 
 export async function deslogaUser(id) {
 
@@ -20,8 +21,13 @@ export async function deslogaUser(id) {
     }
     );
 
-   const data = await response.json();
+    const data = await response.json();
 
-    console.log(data);
+    const msg = "Deslogado por inatividade";
+    const color = "warning";
+    showToast({
+        message: msg,
+        type: color
+    });
     
 }

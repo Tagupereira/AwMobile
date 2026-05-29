@@ -14,7 +14,7 @@ let todosItens = [];
 const btnBack = document.getElementById("back");
 
 btnBack.addEventListener("click", () => {
-    history.go(-1)
+    navegar("back");
 });
 
 // 🔥 CARREGAR UMA VEZ
@@ -127,7 +127,7 @@ document.getElementById('equipment-list').addEventListener('click', (e) => {
     // salva o objeto (rápido)
     localStorage.setItem('itemSelecionado', JSON.stringify(item));
 
-    window.location.href = `../details_equipment.html`;
+   navegar(`../details_equipment.html`);
 
 });
 

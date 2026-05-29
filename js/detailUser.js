@@ -4,7 +4,7 @@ import { navegar } from '../js/router.js';
 
 const btnBack = document.getElementById("back"); 
 btnBack.addEventListener("click", () => {
-    history.go(-1)
+    navegar("back");
 });
 
 const userSession = JSON.parse(sessionStorage.getItem("user"));

@@ -44,7 +44,7 @@ const editItem = document.getElementById("editItem");
 
 editItem.addEventListener("click", () => {
 
-    window.location.href = `../cadastro.html?id=${itemLS.id}`;
+    navegar(`../cadastro.html?id=${itemLS.id}`);
 
 })
 

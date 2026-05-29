@@ -122,7 +122,7 @@ function renderizar(lista) {
         btn.addEventListener("click", () => {
 
             localStorage.setItem("userView", userId);
-            window.location.href = `../view_user.html`;         
+            navegar(`../view_user.html`);         
             
         });
     });

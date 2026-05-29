@@ -23,6 +23,9 @@ export function showToast({
     
 }) {
 
+  console.log(message, type,duration);
+  
+
     criarContainer();
 
     const toast = document.createElement('div');

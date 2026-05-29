@@ -1,4 +1,5 @@
-import { API_URL, API_KEY } from './config.js';
+import { API_URL, API_KEY } from '../config.js';
+import { showToast } from "../js/toast.js";
 
 const tabelas = [
 
@@ -14,7 +15,7 @@ const tabelas = [
 
 ];
 
-async function fazerBackup(){
+export async function fazerBackup(){
 
    const backup = {};
 
@@ -83,6 +84,11 @@ function baixarBackup(dados){
 
    URL.revokeObjectURL(url);
 
-}
+   const msg = "Realizando Backup";
+   const color = "info";
+   showToast({
+      message: msg,
+      type: color
+   });
 
-fazerBackup();
+}

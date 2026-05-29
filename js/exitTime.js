@@ -1,5 +1,6 @@
 import { deslogaUser } from "../js/desloga.js";
 import { criarLog } from "../js/log.js";
+import { navegar } from "../js/router.js";
 
 let timeoutInatividade;
 
@@ -41,7 +42,7 @@ async function logout(){
   
   await deslogaUser(userSession.id);
   await criarLog(userSession, acao, obs);
-  window.location.href = 'index.html';
+  navegar('index.html');
   sessionStorage.clear();
 
 }

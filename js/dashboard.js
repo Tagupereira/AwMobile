@@ -18,20 +18,20 @@ idSession.innerText = userFormat;//adiciona o Nome do usuario no header
 
 const cadastro = document.getElementById("cadastro");
 cadastro.addEventListener("click", () => {
-    window.location.href = `../cadastro.html`;
+    navegar(`../cadastro.html`);
 })
 
 const goItens = document.querySelectorAll('.goItens');
 
 goItens.forEach(btn => {
     btn.addEventListener("click", () => {
-        window.location.href = `../view_equipment.html`;
+       navegar(`../view_equipment.html`);
     });
 });
 
 const goTeam = document.getElementById('team');
     goTeam.addEventListener("click", () => {
-        window.location.href = `../team.html`;
+        navegar(`../team.html`);
     });
 
 async function getTotalItens() {

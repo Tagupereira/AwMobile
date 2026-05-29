@@ -2,6 +2,7 @@ import { API_URL, API_KEY } from "../config.js" ;
 import { deslogaUser } from "../js/desloga.js";
 import { criarLog } from "../js/log.js";
 import { showToast } from "../js/toast.js";
+import { navegar } from '../js/router.js';
 
 const userSession = JSON.parse(sessionStorage.getItem("user"));
 
@@ -93,8 +94,7 @@ async function userStatus(dataId) {
     const { password, ...userSafe } = data[0];
 
     sessionStorage.setItem("user", JSON.stringify(userSafe));
-    window.location.href = "../dashboard.html";
-    
+    navegar('dashboard.html');
 }
 
 ////////////////////////////////////////////////////////////////////////

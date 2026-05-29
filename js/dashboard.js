@@ -1,11 +1,12 @@
 import { API_URL, API_KEY } from "../config.js";
 import { resetarTimer } from "../js/exitTime.js";
+import { navegar } from '../js/router.js';
 
 const userSession = JSON.parse(sessionStorage.getItem("user"));
     console.log(userSession);
 
     if(!userSession){
-        window.location.href = 'index.html';
+        navegar('index.html');
     }
 
 //userSession.charAt(0).toUpperCase() -> pega a primeira letra e deixa maiuscula

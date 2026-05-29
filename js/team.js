@@ -1,5 +1,6 @@
 import { API_URL, API_KEY } from "../config.js";
 import { resetarTimer } from "../js/exitTime.js";
+import { navegar } from '../js/router.js';
 
 const btnBack = document.getElementById("back");
  
@@ -12,7 +13,7 @@ const userSession = JSON.parse(sessionStorage.getItem("user"));
 
     if(!userSession){
 
-        window.location.href = 'index.html';
+        navegar('index.html');
 
     }
 
